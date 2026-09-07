@@ -72,4 +72,19 @@ public class Venta {
         return usuario;
     }
 
+    public String getResumenProductos() {
+        if (detalles == null || detalles.isEmpty()) {
+            return "Sin productos";
+        }
+        StringBuilder sb = new StringBuilder();
+        for (DetalleVenta d : detalles) {
+            if (sb.length() > 0) {
+                sb.append(", ");
+            }
+            if (d.getProducto() != null) {
+                sb.append(d.getProducto().getNombre()).append(" (x").append(d.getCantidad()).append(")");
+            }
+        }
+        return sb.length() > 0 ? sb.toString() : "Sin productos";
+    }
 }

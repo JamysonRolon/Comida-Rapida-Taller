@@ -37,6 +37,7 @@ class VentaServiceTest {
         assertEquals(new BigDecimal("24001.00"), venta.getTotal());
         assertEquals(new BigDecimal("24001.00"), venta.getDetalles().getFirst().getSubtotal());
         assertEquals(8, producto.getStock());
+        assertEquals("Hamburguesa (x2)", venta.getResumenProductos());
         assertEquals(clock.instant(), venta.getFechaHora());
     }
 

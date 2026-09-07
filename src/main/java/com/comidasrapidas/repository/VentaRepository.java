@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
 public interface VentaRepository extends JpaRepository<Venta, Long> {
-    @EntityGraph(attributePaths = {"cliente", "usuario"})
+    @EntityGraph(attributePaths = {"cliente", "usuario", "detalles", "detalles.producto"})
     List<Venta> findByFechaHoraGreaterThanEqualAndFechaHoraLessThanOrderByFechaHoraDesc(
             Instant desde, Instant hasta);
 
@@ -20,7 +20,7 @@ public interface VentaRepository extends JpaRepository<Venta, Long> {
     @Query("select coalesce(sum(v.total), 0) from Venta v where v.fechaHora >= :desde and v.fechaHora < :hasta")
     BigDecimal sumarPeriodo(@Param("desde") Instant desde, @Param("hasta") Instant hasta);
 
-    @EntityGraph(attributePaths = {"cliente", "usuario"})
+    @EntityGraph(attributePaths = {"cliente", "usuario", "detalles", "detalles.producto"})
     List<Venta> findAllByOrderByFechaHoraDesc();
 
     boolean existsByClienteId(Long clienteId);
