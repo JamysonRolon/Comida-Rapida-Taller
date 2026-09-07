@@ -12,48 +12,49 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class AuthService {
-    private final UsuarioRepository usuarios;
-    private final SesionService sesion;
-    private final BCryptPasswordEncoder encoder;
-    private final EntityManager entityManager;
+    private final UsuarioRepository repositorioUsuarios;
+    private final SesionService servicioSesion;
+    private final BCryptPasswordEncoder codificador;
+    private final EntityManager gestorEntidades;
 
-    public AuthService(UsuarioRepository usuarios, SesionService sesion,
-                       BCryptPasswordEncoder encoder, EntityManager entityManager) {
-        this.usuarios = usuarios;
-        this.sesion = sesion;
-        this.encoder = encoder;
-        this.entityManager = entityManager;
+    public AuthService(UsuarioRepository repositorioUsuarios, SesionService servicioSesion,
+                       BCryptPasswordEncoder codificador, EntityManager gestorEntidades) {
+        this.repositorioUsuarios = repositorioUsuarios;
+        this.servicioSesion = servicioSesion;
+        this.codificador = codificador;
+        this.gestorEntidades = gestorEntidades;
     }
 
     public boolean requiereConfiguracion() {
-        return usuarios.count() == 0;
+        return repositorioUsuarios.count() == 0;
     }
 
     @Transactional(readOnly = true)
-    public Usuario iniciar(String username, String password) {
-        sesion.cerrar();
-        String nombre = Validacion.username(username);
-        Usuario usuario = usuarios.findByUsername(nombre).filter(Usuario::isActivo)
+    public Usuario iniciar(String nombreUsuario, String clave) {
+        servicioSesion.cerrar();
+        String nombreNormalizado = Validacion.username(nombreUsuario);
+        Usuario usuario = repositorioUsuarios.findByUsername(nombreNormalizado).filter(Usuario::isActivo)
                 .orElseThrow(this::credencialesInvalidas);
-        if (password == null || !encoder.matches(password, usuario.getPassword())) {
+        if (clave == null || !codificador.matches(clave, usuario.getPassword())) {
             throw credencialesInvalidas();
         }
-        sesion.abrir(usuario);
+        servicioSesion.abrir(usuario);
         return usuario;
     }
 
     @Transactional
-    public void configurarAdministrador(String nombre, String username, String password) {
+    public void configurarAdministrador(String nombre, String nombreUsuario, String clave) {
         // Serializa únicamente la primera configuración sin añadir una tabla.
-        entityManager.createNativeQuery("SELECT pg_advisory_xact_lock(72419031)").getSingleResult();
+        gestorEntidades.createNativeQuery("SELECT pg_advisory_xact_lock(72419031)").getSingleResult();
         Validacion.exigir(requiereConfiguracion(), "El administrador inicial ya fue configurado.");
-        Validacion.password(password);
+        Validacion.password(clave);
         Usuario usuario = new Usuario(Validacion.texto(nombre, "Nombre", 100),
-                Validacion.username(username), encoder.encode(password), Rol.ADMINISTRADOR);
-        usuarios.saveAndFlush(usuario);
+                Validacion.username(nombreUsuario), codificador.encode(clave), Rol.ADMINISTRADOR);
+        repositorioUsuarios.saveAndFlush(usuario);
     }
 
     private AccesoDenegadoException credencialesInvalidas() {
         return new AccesoDenegadoException("Usuario o contraseña incorrectos, o cuenta inactiva.");
     }
 }
+

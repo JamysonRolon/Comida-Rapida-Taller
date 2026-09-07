@@ -19,4 +19,9 @@ public interface VentaRepository extends JpaRepository<Venta, Long> {
 
     @Query("select coalesce(sum(v.total), 0) from Venta v where v.fechaHora >= :desde and v.fechaHora < :hasta")
     BigDecimal sumarPeriodo(@Param("desde") Instant desde, @Param("hasta") Instant hasta);
+
+    @EntityGraph(attributePaths = {"cliente", "usuario"})
+    List<Venta> findAllByOrderByFechaHoraDesc();
 }
+
+

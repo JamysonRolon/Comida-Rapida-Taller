@@ -12,67 +12,67 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class ProductoController {
-    private final ProductoService productos;
-    private final CategoriaService categorias;
-    private final FxTasks tareas;
-    private TableView<Producto> tabla;
-    private Formulario form;
-    private ComboBox<Categoria> categoria;
-    private VBox pagina;
+    private final ProductoService servicioProductos;
+    private final CategoriaService servicioCategorias;
+    private final FxTasks tareasFx;
+    private TableView<Producto> tablaProductos;
+    private Formulario formulario;
+    private ComboBox<Categoria> comboCategoria;
+    private VBox panelPagina;
 
-    public ProductoController(ProductoService productos, CategoriaService categorias, FxTasks tareas) {
-        this.productos = productos;
-        this.categorias = categorias;
-        this.tareas = tareas;
+    public ProductoController(ProductoService servicioProductos, CategoriaService servicioCategorias, FxTasks tareasFx) {
+        this.servicioProductos = servicioProductos;
+        this.servicioCategorias = servicioCategorias;
+        this.tareasFx = tareasFx;
     }
 
-    public Parent vista(boolean admin) {
-        form = null;
-        categoria = null;
-        tabla = new TableView<>();
-        columnas();
-        HBox cuerpo = Controles.fila(tabla);
-        HBox.setHgrow(tabla, Priority.ALWAYS);
+    public Parent vista(boolean esAdministrador) {
+        formulario = null;
+        comboCategoria = null;
+        tablaProductos = new TableView<>();
+        configurarColumnas();
+        HBox cuerpo = Controles.fila(tablaProductos);
+        HBox.setHgrow(tablaProductos, Priority.ALWAYS);
         VBox.setVgrow(cuerpo, Priority.ALWAYS);
-        if (admin) {
-            cuerpo.getChildren().add(editor());
+        if (esAdministrador) {
+            cuerpo.getChildren().add(crearEditor());
         }
-        pagina = Controles.pagina("Productos", "Precio único · Stock por unidades · Desactivación sin borrar historial",
+        panelPagina = Controles.pagina("Productos", "Precio único · Stock por unidades · Modificación de productos",
                 Controles.boton("Actualizar lista", this::cargar), cuerpo);
         javafx.application.Platform.runLater(this::cargar);
-        return pagina;
+        return panelPagina;
     }
 
-    private void columnas() {
-        Controles.columna(tabla, "Producto", Producto::getNombre);
-        Controles.columna(tabla, "Categoría", p -> p.getCategoria().getNombre());
-        Controles.columna(tabla, "Precio", p -> Formato.dinero(p.getPrecio()));
-        Controles.columna(tabla, "Stock", Producto::getStock);
-        Controles.columna(tabla, "Estado", p -> Formato.estado(p.isActivo()));
-        tabla.getColumns().get(0).setMinWidth(165);
-        tabla.getColumns().get(3).setMaxWidth(65);
+    private void configurarColumnas() {
+        Controles.columna(tablaProductos, "Producto", Producto::getNombre);
+        Controles.columna(tablaProductos, "Categoría", producto -> producto.getCategoria().getNombre());
+        Controles.columna(tablaProductos, "Precio", producto -> Formato.dinero(producto.getPrecio()));
+        Controles.columna(tablaProductos, "Stock", Producto::getStock);
+        tablaProductos.getColumns().get(0).setMinWidth(165);
+        tablaProductos.getColumns().get(3).setMaxWidth(65);
     }
 
-    private VBox editor() {
-        form = new Formulario();
-        form.texto("Nombre");
-        form.texto("Descripción");
-        form.texto("Precio");
-        form.texto("Stock");
-        categoria = form.opciones("Categoría");
-        VBox editor = new VBox(12, form, Controles.principal("Guardar producto", this::guardar),
-                Controles.boton("Nuevo / limpiar", this::limpiar),
-                Controles.boton("Desactivar seleccionado", this::desactivar));
+    private VBox crearEditor() {
+        formulario = new Formulario();
+        formulario.texto("Nombre");
+        formulario.texto("Descripción");
+        formulario.texto("Precio");
+        formulario.texto("Stock");
+        comboCategoria = formulario.opciones("Categoría");
+        VBox editor = new VBox(12, formulario, Controles.principal("Guardar producto", this::guardar),
+                Controles.boton("Limpiar campos", this::limpiar));
         editor.setPrefWidth(330);
-        tabla.getSelectionModel().selectedItemProperty().addListener((o, a, actual) -> seleccionar(actual));
+
+        tablaProductos.getSelectionModel().selectedItemProperty().addListener((observable, anterior, actual) -> seleccionar(actual));
         return editor;
     }
 
     private void cargar() {
-        tareas.ejecutar(pagina, () -> productos.listar(false), lista -> {
-            tabla.getItems().setAll(lista);
-            if (form != null) {
-                tareas.ejecutar(pagina, () -> categorias.listar(true), cat -> categoria.getItems().setAll(cat));
+        tareasFx.ejecutar(panelPagina, () -> servicioProductos.listar(false), lista -> {
+            tablaProductos.getItems().setAll(lista);
+            tablaProductos.refresh();
+            if (formulario != null && comboCategoria != null) {
+                tareasFx.ejecutar(panelPagina, () -> servicioCategorias.listar(true), categorias -> comboCategoria.getItems().setAll(categorias));
             }
         });
     }
@@ -81,35 +81,33 @@ public class ProductoController {
         if (producto == null) {
             return;
         }
-        form.poner("Nombre", producto.getNombre());
-        form.poner("Descripción", producto.getDescripcion());
-        form.poner("Precio", producto.getPrecio().toPlainString());
-        form.poner("Stock", String.valueOf(producto.getStock()));
-        categoria.getItems().stream().filter(c -> c.getId().equals(producto.getCategoria().getId()))
-                .findFirst().ifPresentOrElse(categoria::setValue, () -> categoria.setValue(null));
+        formulario.poner("Nombre", producto.getNombre());
+        formulario.poner("Descripción", producto.getDescripcion());
+        formulario.poner("Precio", producto.getPrecio().toPlainString());
+        formulario.poner("Stock", String.valueOf(producto.getStock()));
+        comboCategoria.getItems().stream().filter(categoria -> categoria.getId().equals(producto.getCategoria().getId()))
+                .findFirst().ifPresentOrElse(comboCategoria::setValue, () -> comboCategoria.setValue(null));
     }
 
     private void guardar() {
-        Producto elegido = tabla.getSelectionModel().getSelectedItem();
-        Producto datos = new Producto(form.valor("Nombre"), form.valor("Descripción"),
-                Controles.decimal(form.valor("Precio")), Controles.entero(form.valor("Stock"), "Stock"), categoria.getValue());
-        tareas.ejecutar(pagina, () -> elegido == null ? productos.registrar(datos)
-                : productos.actualizar(elegido.getId(), datos, elegido.getStock()), guardado -> {
+        Producto elegido = tablaProductos.getSelectionModel().getSelectedItem();
+        Producto datos = new Producto(formulario.valor("Nombre"), formulario.valor("Descripción"),
+                Controles.decimal(formulario.valor("Precio")), Controles.entero(formulario.valor("Stock"), "Stock"), comboCategoria.getValue());
+        tareasFx.ejecutar(panelPagina, () -> elegido == null ? servicioProductos.registrar(datos)
+                : servicioProductos.actualizar(elegido.getId(), datos, elegido.getStock()), guardado -> {
                     limpiar();
                     cargar();
                 });
     }
 
-    private void desactivar() {
-        Producto producto = Controles.seleccionado(tabla);
-        if (Dialogos.confirmar("¿Desactivar " + producto.getNombre() + "?")) {
-            tareas.ejecutar(pagina, () -> { productos.desactivar(producto.getId()); return true; }, ok -> cargar());
+    private void limpiar() {
+        tablaProductos.getSelectionModel().clearSelection();
+        if (formulario != null) {
+            formulario.limpiar();
+        }
+        if (comboCategoria != null) {
+            comboCategoria.setValue(null);
         }
     }
-
-    private void limpiar() {
-        tabla.getSelectionModel().clearSelection();
-        form.limpiar();
-        categoria.setValue(null);
-    }
 }
+

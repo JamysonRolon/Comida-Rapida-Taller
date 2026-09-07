@@ -15,40 +15,40 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MainController {
-    private final ClienteController clientes;
-    private final CategoriaController categorias;
-    private final ProductoController productos;
-    private final UsuarioController usuarios;
-    private final VentaController venta;
-    private final HistorialController historial;
-    private final SesionService sesion;
-    private final CarritoService carrito;
-    private BorderPane raiz;
+    private final ClienteController controladorClientes;
+    private final CategoriaController controladorCategorias;
+    private final ProductoController controladorProductos;
+    private final UsuarioController controladorUsuarios;
+    private final VentaController controladorVenta;
+    private final HistorialController controladorHistorial;
+    private final SesionService servicioSesion;
+    private final CarritoService servicioCarrito;
+    private BorderPane panelRaiz;
 
-    public MainController(ClienteController clientes, CategoriaController categorias, ProductoController productos,
-                          UsuarioController usuarios, VentaController venta, HistorialController historial,
-                          SesionService sesion, CarritoService carrito) {
-        this.clientes = clientes;
-        this.categorias = categorias;
-        this.productos = productos;
-        this.usuarios = usuarios;
-        this.venta = venta;
-        this.historial = historial;
-        this.sesion = sesion;
-        this.carrito = carrito;
+    public MainController(ClienteController controladorClientes, CategoriaController controladorCategorias, ProductoController controladorProductos,
+                          UsuarioController controladorUsuarios, VentaController controladorVenta, HistorialController controladorHistorial,
+                          SesionService servicioSesion, CarritoService servicioCarrito) {
+        this.controladorClientes = controladorClientes;
+        this.controladorCategorias = controladorCategorias;
+        this.controladorProductos = controladorProductos;
+        this.controladorUsuarios = controladorUsuarios;
+        this.controladorVenta = controladorVenta;
+        this.controladorHistorial = controladorHistorial;
+        this.servicioSesion = servicioSesion;
+        this.servicioCarrito = servicioCarrito;
     }
 
-    public void mostrar(Stage stage, Usuario usuario, Runnable salir) {
-        boolean admin = usuario.getRol() == Rol.ADMINISTRADOR;
-        raiz = new BorderPane();
-        VBox menu = menu(usuario, admin);
-        menu.getChildren().add(Controles.boton("Cerrar sesión", () -> cerrar(salir)));
-        raiz.setLeft(menu);
-        stage.getScene().setRoot(raiz);
-        navegar(venta::vista);
+    public void mostrar(Stage escenario, Usuario usuario, Runnable accionSalir) {
+        boolean esAdministrador = usuario.getRol() == Rol.ADMINISTRADOR;
+        panelRaiz = new BorderPane();
+        VBox menuLateral = crearMenu(usuario, esAdministrador);
+        menuLateral.getChildren().add(Controles.boton("Cerrar sesión", () -> cerrarSesion(accionSalir)));
+        panelRaiz.setLeft(menuLateral);
+        escenario.getScene().setRoot(panelRaiz);
+        navegar(controladorVenta::vista);
     }
 
-    private VBox menu(Usuario usuario, boolean admin) {
+    private VBox crearMenu(Usuario usuario, boolean esAdministrador) {
         Label marca = new Label("COMIDAS\nRÁPIDAS");
         marca.getStyleClass().add("brand");
         Label identidad = new Label(usuario.getNombre() + "\n" + usuario.getRol());
@@ -57,33 +57,34 @@ public class MainController {
         menu.getStyleClass().add("sidebar");
         menu.setPadding(new Insets(24, 18, 24, 18));
         menu.setPrefWidth(220);
-        agregar(menu, "Nueva venta", venta::vista);
-        agregar(menu, "Ventas realizadas", historial::vista);
-        agregar(menu, "Clientes", () -> clientes.vista(admin));
-        agregar(menu, "Productos", () -> productos.vista(admin));
-        agregar(menu, "Categorías", () -> categorias.vista(admin));
-        if (admin) {
-            agregar(menu, "Empleados", usuarios::vista);
+        agregarOpcionMenu(menu, "Nueva venta", controladorVenta::vista);
+        agregarOpcionMenu(menu, "Ventas realizadas", controladorHistorial::vista);
+        agregarOpcionMenu(menu, "Clientes", () -> controladorClientes.vista(esAdministrador));
+        agregarOpcionMenu(menu, "Productos", () -> controladorProductos.vista(esAdministrador));
+        agregarOpcionMenu(menu, "Categorías", () -> controladorCategorias.vista(esAdministrador));
+        if (esAdministrador) {
+            agregarOpcionMenu(menu, "Empleados", controladorUsuarios::vista);
         }
         return menu;
     }
 
-    private void agregar(VBox menu, String texto, Supplier<Parent> vista) {
-        javafx.scene.control.Button boton = Controles.boton(texto, () -> navegar(vista));
+    private void agregarOpcionMenu(VBox menu, String texto, Supplier<Parent> proveedorVista) {
+        javafx.scene.control.Button boton = Controles.boton(texto, () -> navegar(proveedorVista));
         boton.setMaxWidth(Double.MAX_VALUE);
         menu.getChildren().add(boton);
     }
 
-    private void navegar(Supplier<Parent> vista) {
-        raiz.setCenter(vista.get());
+    private void navegar(Supplier<Parent> proveedorVista) {
+        panelRaiz.setCenter(proveedorVista.get());
     }
 
-    private void cerrar(Runnable salir) {
-        if (!carrito.getLineas().isEmpty() && !Dialogos.confirmar("¿Cerrar sesión y descartar el carrito?")) {
+    private void cerrarSesion(Runnable accionSalir) {
+        if (!servicioCarrito.getLineas().isEmpty() && !Dialogos.confirmar("¿Cerrar sesión y descartar el carrito?")) {
             return;
         }
-        carrito.vaciar();
-        sesion.cerrar();
-        salir.run();
+        servicioCarrito.vaciar();
+        servicioSesion.cerrar();
+        accionSalir.run();
     }
 }
+

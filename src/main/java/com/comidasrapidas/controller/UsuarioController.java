@@ -12,74 +12,89 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class UsuarioController {
-    private final UsuarioService usuarios;
-    private final FxTasks tareas;
-    private TableView<Usuario> tabla;
-    private Formulario form;
-    private ComboBox<Rol> rol;
-    private VBox pagina;
+    private final UsuarioService servicioUsuarios;
+    private final FxTasks tareasFx;
+    private TableView<Usuario> tablaUsuarios;
+    private Formulario formulario;
+    private ComboBox<Rol> comboRol;
+    private VBox panelPagina;
 
-    public UsuarioController(UsuarioService usuarios, FxTasks tareas) {
-        this.usuarios = usuarios;
-        this.tareas = tareas;
+    public UsuarioController(UsuarioService servicioUsuarios, FxTasks tareasFx) {
+        this.servicioUsuarios = servicioUsuarios;
+        this.tareasFx = tareasFx;
     }
 
     public Parent vista() {
-        tabla = new TableView<>();
-        Controles.columna(tabla, "Nombre", Usuario::getNombre);
-        Controles.columna(tabla, "Usuario", Usuario::getUsername);
-        Controles.columna(tabla, "Rol", Usuario::getRol);
-        Controles.columna(tabla, "Estado", u -> Formato.estado(u.isActivo()));
+        tablaUsuarios = new TableView<>();
+        Controles.columna(tablaUsuarios, "Nombre", Usuario::getNombre);
+        Controles.columna(tablaUsuarios, "Usuario", Usuario::getUsername);
+        Controles.columna(tablaUsuarios, "Rol", Usuario::getRol);
         crearFormulario();
-        pagina = Controles.pagina("Empleados", "Cree cuentas o seleccione un empleado para cambiar su contraseña o desactivarlo.",
-                tabla, form, Controles.fila(Controles.principal("Crear empleado", this::crear),
-                        Controles.boton("Cambiar contraseña", this::password),
+        panelPagina = Controles.pagina("Empleados", "Cree cuentas o seleccione un empleado para cambiar su contraseña o desactivarlo.",
+                tablaUsuarios, formulario, Controles.fila(Controles.principal("Crear empleado", this::crear),
+                        Controles.boton("Cambiar contraseña", this::cambiarClave),
+                        Controles.boton("Limpiar campos", this::limpiarCampos),
                         Controles.boton("Desactivar seleccionado", this::desactivar),
                         Controles.boton("Actualizar lista", this::cargar)));
         javafx.application.Platform.runLater(this::cargar);
-        return pagina;
+        return panelPagina;
     }
 
+    private void limpiarCampos() {
+        tablaUsuarios.getSelectionModel().clearSelection();
+        if (formulario != null) {
+            formulario.limpiar();
+        }
+        if (comboRol != null) {
+            comboRol.setValue(Rol.CAJERO);
+        }
+    }
+
+
     private void crearFormulario() {
-        form = new Formulario();
-        form.texto("Nombre");
-        form.texto("Usuario");
-        form.password("Contraseña");
-        rol = form.opciones("Rol");
-        rol.getItems().setAll(Rol.values());
-        rol.setValue(Rol.CAJERO);
+        formulario = new Formulario();
+        formulario.texto("Nombre");
+        formulario.texto("Usuario");
+        formulario.password("Contraseña");
+        comboRol = formulario.opciones("Rol");
+        comboRol.getItems().setAll(Rol.values());
+        comboRol.setValue(Rol.CAJERO);
     }
 
     private void cargar() {
-        tareas.ejecutar(pagina, usuarios::listar, lista -> tabla.getItems().setAll(lista));
+        tareasFx.ejecutar(panelPagina, servicioUsuarios::listar, lista -> {
+            tablaUsuarios.getItems().setAll(lista);
+            tablaUsuarios.refresh();
+        });
     }
 
     private void crear() {
-        String nombre = form.valor("Nombre");
-        String username = form.valor("Usuario");
-        String password = form.valor("Contraseña");
-        Rol elegido = rol.getValue();
-        tareas.ejecutar(pagina, () -> usuarios.registrar(nombre, username, password, elegido), usuario -> {
-            form.limpiar();
+        String nombre = formulario.valor("Nombre");
+        String nombreUsuario = formulario.valor("Usuario");
+        String clave = formulario.valor("Contraseña");
+        Rol rolElegido = comboRol.getValue();
+        tareasFx.ejecutar(panelPagina, () -> servicioUsuarios.registrar(nombre, nombreUsuario, clave, rolElegido), usuario -> {
+            formulario.limpiar();
             cargar();
         });
     }
 
-    private void password() {
-        Usuario usuario = Controles.seleccionado(tabla);
-        String password = form.valor("Contraseña");
+    private void cambiarClave() {
+        Usuario usuario = Controles.seleccionado(tablaUsuarios);
+        String clave = formulario.valor("Contraseña");
         if (Dialogos.confirmar("¿Cambiar la contraseña de " + usuario.getUsername() + " por la ingresada?")) {
-            tareas.ejecutar(pagina, () -> { usuarios.cambiarPassword(usuario.getId(), password); return true; }, ok -> {
-                form.poner("Contraseña", "");
+            tareasFx.ejecutar(panelPagina, () -> { servicioUsuarios.cambiarPassword(usuario.getId(), clave); return true; }, ok -> {
+                formulario.poner("Contraseña", "");
                 Dialogos.informar("Contraseña actualizada.");
             });
         }
     }
 
     private void desactivar() {
-        Usuario usuario = Controles.seleccionado(tabla);
+        Usuario usuario = Controles.seleccionado(tablaUsuarios);
         if (Dialogos.confirmar("¿Desactivar la cuenta " + usuario.getUsername() + "?")) {
-            tareas.ejecutar(pagina, () -> { usuarios.desactivar(usuario.getId()); return true; }, ok -> cargar());
+            tareasFx.ejecutar(panelPagina, () -> { servicioUsuarios.desactivar(usuario.getId()); return true; }, ok -> cargar());
         }
     }
 }
+

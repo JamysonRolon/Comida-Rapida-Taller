@@ -11,115 +11,127 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class VentaController {
-    private final ProductoService productos;
-    private final ClienteService clientes;
-    private final VentaService ventas;
-    private final CarritoService carrito;
-    private final FxTasks tareas;
-    private final ComprobanteController comprobantes;
-    private ComboBox<Producto> producto;
-    private ComboBox<Cliente> cliente;
-    private TextField cantidad;
-    private TableView<LineaCarrito> tabla;
-    private Label total;
-    private Label stock;
-    private VBox pagina;
+    private final ProductoService servicioProductos;
+    private final ClienteService servicioClientes;
+    private final VentaService servicioVentas;
+    private final CarritoService servicioCarrito;
+    private final FxTasks tareasFx;
+    private final ComprobanteController controladorComprobantes;
+    private ComboBox<Producto> comboProducto;
+    private ComboBox<Cliente> comboCliente;
+    private TextField campoCantidad;
+    private TableView<LineaCarrito> tablaCarrito;
+    private Label etiquetaTotal;
+    private Label etiquetaStock;
+    private VBox panelPagina;
 
-    public VentaController(ProductoService productos, ClienteService clientes, VentaService ventas,
-                           CarritoService carrito, FxTasks tareas, ComprobanteController comprobantes) {
-        this.productos = productos;
-        this.clientes = clientes;
-        this.ventas = ventas;
-        this.carrito = carrito;
-        this.tareas = tareas;
-        this.comprobantes = comprobantes;
+    public VentaController(ProductoService servicioProductos, ClienteService servicioClientes, VentaService servicioVentas,
+                           CarritoService servicioCarrito, FxTasks tareasFx, ComprobanteController controladorComprobantes) {
+        this.servicioProductos = servicioProductos;
+        this.servicioClientes = servicioClientes;
+        this.servicioVentas = servicioVentas;
+        this.servicioCarrito = servicioCarrito;
+        this.tareasFx = tareasFx;
+        this.controladorComprobantes = controladorComprobantes;
     }
 
     public Parent vista() {
-        Formulario form = crearFormulario();
-        tabla = new TableView<>();
-        columnas();
-        total = new Label();
-        total.getStyleClass().add("total");
-        pagina = Controles.pagina("Nueva venta", "Seleccione productos y confirme el cobro en efectivo.", form,
+        Formulario formulario = crearFormulario();
+        tablaCarrito = new TableView<>();
+        tablaCarrito.setPlaceholder(new Label("Carro vacío"));
+        configurarColumnas();
+        etiquetaTotal = new Label();
+        etiquetaTotal.getStyleClass().add("total");
+        panelPagina = Controles.pagina("Nueva venta", "Seleccione productos y confirme el cobro en efectivo.", formulario,
                 Controles.fila(Controles.principal("Agregar producto", this::agregar),
                         Controles.boton("Actualizar catálogo y clientes", this::cargar)),
-                tabla, Controles.fila(Controles.boton("Quitar línea", this::quitar),
-                        Controles.boton("Vaciar carrito", this::vaciar)), total,
+                tablaCarrito, Controles.fila(Controles.boton("Quitar línea", this::quitar),
+                        Controles.boton("Vaciar carrito", this::vaciar)), etiquetaTotal,
                 Controles.principal("Confirmar venta en efectivo", this::confirmar));
         refrescar();
         javafx.application.Platform.runLater(this::cargar);
-        return pagina;
+        return panelPagina;
     }
 
     private Formulario crearFormulario() {
-        Formulario form = new Formulario();
-        producto = form.opciones("Producto");
-        producto.setPromptText("Seleccione un producto");
-        cantidad = form.texto("Cantidad");
-        cantidad.setText("1");
-        stock = new Label("Seleccione un producto para ver precio y existencias.");
-        form.agregar("Disponibilidad", stock);
-        cliente = form.opciones("Cliente opcional");
-        cliente.setPromptText("Sin cliente registrado");
-        form.agregar("", Controles.boton("Venta sin cliente", () -> cliente.setValue(null)));
-        producto.valueProperty().addListener((o, a, p) -> stock.setText(p == null ? ""
-                : Formato.dinero(p.getPrecio()) + " · " + p.getStock() + " unidades disponibles"));
-        return form;
+        Formulario formulario = new Formulario();
+        comboProducto = formulario.opciones("Producto");
+        comboProducto.setPromptText("Seleccione un producto");
+        campoCantidad = formulario.texto("Cantidad");
+        campoCantidad.setText("1");
+        etiquetaStock = new Label("Seleccione un producto para ver precio y existencias.");
+        formulario.agregar("Disponibilidad", etiquetaStock);
+        comboCliente = formulario.opciones("Cliente (Factura Electrónica)");
+        comboCliente.setPromptText("Sin cliente (Venta rápida POS)");
+        formulario.agregar("", Controles.boton("Venta POS sin cliente", () -> comboCliente.setValue(null)));
+        comboProducto.valueProperty().addListener((observable, anterior, producto) -> etiquetaStock.setText(producto == null ? ""
+                : Formato.dinero(producto.getPrecio()) + " · " + producto.getStock() + " unidades disponibles"));
+        return formulario;
     }
 
-    private void columnas() {
-        Controles.columna(tabla, "Producto", LineaCarrito::getNombre);
-        Controles.columna(tabla, "Cantidad", LineaCarrito::getCantidad);
-        Controles.columna(tabla, "Precio unitario", l -> Formato.dinero(l.getPrecioUnitario()));
-        Controles.columna(tabla, "Subtotal", l -> Formato.dinero(l.getSubtotal()));
+    private void configurarColumnas() {
+        Controles.columna(tablaCarrito, "Producto", LineaCarrito::getNombre);
+        Controles.columna(tablaCarrito, "Cantidad", LineaCarrito::getCantidad);
+        Controles.columna(tablaCarrito, "Precio unitario", linea -> Formato.dinero(linea.getPrecioUnitario()));
+        Controles.columna(tablaCarrito, "Subtotal", linea -> Formato.dinero(linea.getSubtotal()));
     }
 
     private void cargar() {
-        tareas.ejecutar(pagina, () -> productos.listar(true), lista -> {
-            producto.getItems().setAll(lista);
-            producto.setValue(null);
-            tareas.ejecutar(pagina, () -> clientes.listar(true), datos -> {
-                cliente.getItems().setAll(datos);
-                cliente.setValue(null);
+        tareasFx.ejecutar(panelPagina, () -> servicioProductos.listar(true), listaProductos -> {
+            comboProducto.getItems().setAll(listaProductos);
+            comboProducto.setValue(null);
+            tareasFx.ejecutar(panelPagina, () -> servicioClientes.listar(true), listaClientes -> {
+                comboCliente.getItems().setAll(listaClientes);
+                comboCliente.setValue(null);
             });
         });
     }
 
     private void agregar() {
-        carrito.agregar(producto.getValue(), Controles.entero(cantidad.getText(), "Cantidad"));
+        servicioCarrito.agregar(comboProducto.getValue(), Controles.entero(campoCantidad.getText(), "Cantidad"));
         refrescar();
     }
 
     private void quitar() {
-        carrito.quitar(Controles.seleccionado(tabla).getProductoId());
+        if (servicioCarrito.getLineas().isEmpty()) {
+            Dialogos.informar("El carro está vacío.");
+            return;
+        }
+        servicioCarrito.quitar(Controles.seleccionado(tablaCarrito).getProductoId());
         refrescar();
     }
 
     private void vaciar() {
+        if (servicioCarrito.getLineas().isEmpty()) {
+            Dialogos.informar("El carro ya está vacío.");
+            return;
+        }
         if (Dialogos.confirmar("¿Vaciar el carrito actual?")) {
-            carrito.vaciar();
+            servicioCarrito.vaciar();
             refrescar();
         }
     }
 
+
     private void refrescar() {
-        tabla.getItems().setAll(carrito.getLineas());
-        total.setText("Total  " + Formato.dinero(carrito.total()));
+        tablaCarrito.getItems().setAll(servicioCarrito.getLineas());
+        tablaCarrito.refresh();
+        etiquetaTotal.setText("Total  " + Formato.dinero(servicioCarrito.total()));
     }
 
     private void confirmar() {
-        List<LineaCarrito> lineas = carrito.getLineas();
+        List<LineaCarrito> lineas = servicioCarrito.getLineas();
         com.comidasrapidas.util.Validacion.exigir(!lineas.isEmpty(), "Agregue al menos un producto.");
-        Long clienteId = cliente.getValue() == null ? null : cliente.getValue().getId();
-        if (!Dialogos.confirmar("¿Registrar la venta por " + Formato.dinero(carrito.total()) + " en efectivo?")) {
+        Long clienteId = comboCliente.getValue() == null ? null : comboCliente.getValue().getId();
+        if (!Dialogos.confirmar("¿Registrar la venta por " + Formato.dinero(servicioCarrito.total()) + " en efectivo?")) {
             return;
         }
-        tareas.ejecutar(pagina, () -> ventas.registrar(lineas, clienteId), venta -> {
-            carrito.vaciar();
+        tareasFx.ejecutar(panelPagina, () -> servicioVentas.registrar(lineas, clienteId), ventaRealizada -> {
+            servicioCarrito.vaciar();
             refrescar();
-            comprobantes.mostrar(venta, pagina.getScene().getWindow());
+            controladorComprobantes.mostrar(ventaRealizada, panelPagina.getScene().getWindow());
             cargar();
         });
     }
 }
+

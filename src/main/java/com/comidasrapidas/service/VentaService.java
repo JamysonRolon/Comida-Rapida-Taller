@@ -54,12 +54,29 @@ public class VentaService {
     }
 
     @Transactional(readOnly = true)
+    public List<Venta> consultarMes(LocalDate fecha) {
+        sesion.exigirUsuario();
+        Validacion.exigir(fecha != null, "Seleccione una fecha.");
+        java.time.YearMonth mes = java.time.YearMonth.from(fecha);
+        return ventas.findByFechaHoraGreaterThanEqualAndFechaHoraLessThanOrderByFechaHoraDesc(
+                mes.atDay(1).atStartOfDay(clock.getZone()).toInstant(),
+                mes.plusMonths(1).atDay(1).atStartOfDay(clock.getZone()).toInstant());
+    }
+
+    @Transactional(readOnly = true)
+    public List<Venta> consultarTodas() {
+        sesion.exigirUsuario();
+        return ventas.findAllByOrderByFechaHoraDesc();
+    }
+
+    @Transactional(readOnly = true)
     public BigDecimal totalDia(LocalDate fecha) {
         sesion.exigirUsuario();
         Validacion.exigir(fecha != null, "Seleccione una fecha.");
         return ventas.sumarPeriodo(fecha.atStartOfDay(clock.getZone()).toInstant(),
                 fecha.plusDays(1).atStartOfDay(clock.getZone()).toInstant());
     }
+
 
     @Transactional(readOnly = true)
     public Venta consultar(Long id) {

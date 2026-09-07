@@ -21,12 +21,24 @@ El primer script usa los binarios de PostgreSQL 18 instalados en este equipo. Cr
 
 La aplicación crea las seis tablas al iniciar sobre una base vacía y valida sus correspondencias JPA. El script local activa `DEMO_DATA=true` y carga un conjunto ficticio idempotente. Si se ejecuta sin datos de demostración, la primera pantalla permite definir el administrador inicial.
 
+## Credenciales de Acceso
+
+### Usuario Administrador (Principal)
+- **Usuario:** `pepito_admin`
+- **Contraseña:** `PepitoAdmin123*`
+- **Rol:** `ADMINISTRADOR` (Acceso completo: Gestión de Productos, Categorías, Empleados/Usuarios, Clientes, Exportación de Reportes a Excel y Ventas)
+
+### Usuario Cajero (Demostración)
+- **Usuario:** `daniel`
+- **Rol:** `CAJERO` (Atención en punto de venta, registro de pedidos en carrito, facturación electrónica/POS, consulta de ventas)
+
 ## Datos ficticios incluidos
 
 La carga de demostración crea cinco categorías, doce productos, cinco clientes y tres ventas de ejemplo. También crea estas cuentas:
 
 | Nombre | Usuario | Rol |
 | --- | --- | --- |
+| Pepito Admin | `pepito_admin` | Administrador |
 | Daniel | `daniel` | Cajero |
 | Juan | `juan` | Administrador |
 
@@ -57,6 +69,78 @@ Las operaciones principales necesitan PostgreSQL local en ejecución. Para deten
 Cree una base dedicada y un usuario propietario con permiso de crear sus tablas. Defina `DB_URL`, `DB_USER` y `DB_PASSWORD` en el entorno y ejecute `mvn javafx:run`. Ejemplo de URL: `jdbc:postgresql://localhost:5432/comidas_rapidas`. El script `iniciar.ps1` da prioridad a `.work/db-local.env` si existe.
 
 El DDL está en [schema.sql](src/main/resources/schema.sql). Se utiliza `ddl-auto=validate`; no se modifican automáticamente estructuras existentes. Los scripts de instalación no reemplazan una estrategia de migraciones para futuras versiones.
+
+## Guía paso a paso para poblar la base de datos
+
+Existen dos métodos para ingresar información en el sistema:
+
+### Método 1: Desde la interfaz de la aplicación (Recomendado)
+
+Siga este orden para respetar la integridad referencial de los datos:
+
+1. **Iniciar sesión:**
+   - Ingrese con el usuario administrador: `pepito_admin` y contraseña `PepitoAdmin123*`.
+2. **Crear Categorías (Menú lateral -> Categorías):**
+   - Ingrese el nombre de la categoría (por ejemplo: `Hamburguesas`, `Bebidas`, `Acompañamientos`, `Combos`).
+   - Haga clic en **Guardar categoría**.
+   - Use el botón **Limpiar campos** para ingresar la siguiente categoría.
+3. **Crear Productos (Menú lateral -> Productos):**
+   - Complete los campos:
+     - **Nombre:** Nombre del producto (ej: `Hamburguesa Especial Doble`).
+     - **Descripción:** Ingredientes o detalle (ej: `Doble carne artesanal, queso cheddar y tocineta`).
+     - **Precio:** Valor unitario en pesos sin puntos de miles (ej: `22000` o `22000,50`).
+     - **Stock:** Unidades disponibles en inventario (ej: `50`).
+     - **Categoría:** Seleccione la categoría creada en el paso anterior.
+   - Haga clic en **Guardar producto**.
+4. **Registrar Clientes (Menú lateral -> Clientes):**
+   - Seleccione el **Tipo de documento** en el desplegable (`Cédula de ciudadanía` o `NIT`).
+   - Ingrese:
+     - **Documento:** Número de identificación (ej: `1098765432` o `900123456-1`).
+     - **Nombre y Apellido:** Nombres del cliente o razón social.
+     - **Teléfono y Correo:** Datos de contacto para la factura electrónica.
+   - Haga clic en **Guardar cliente**.
+5. **Crear Empleados / Cajeros (Menú lateral -> Empleados):**
+   - Digite el nombre completo, el nombre de usuario (en minúsculas), la contraseña y seleccione el rol `CAJERO`.
+   - Haga clic en **Crear empleado**.
+6. **Registrar Ventas (Menú lateral -> Nueva venta):**
+   - Seleccione el producto del catálogo y la cantidad a vender.
+   - Haga clic en **Agregar producto** para sumar al carrito.
+   - Si la venta es con **Factura Electrónica**, seleccione el cliente registrado en el combo. Si es consumidor final, use el botón **Venta POS sin cliente**.
+   - Haga clic en **Confirmar venta en efectivo** y en la ventana emergente elija **Descargar comprobante en PDF**.
+
+---
+
+### Método 2: Inserción directa mediante SQL (psql o pgAdmin)
+
+Si prefiere cargar datos directamente en PostgreSQL, ejecute las siguientes instrucciones en orden:
+
+```sql
+-- 1. Crear base de datos (si aún no existe)
+CREATE DATABASE comidas_rapidas;
+
+-- 2. Conectarse a la base de datos y ejecutar el esquema DDL de schema.sql
+-- (Las tablas se crean automáticamente al iniciar la app si la base está vacía).
+
+-- 3. Insertar Categorías
+INSERT INTO categoria (nombre, activo) VALUES 
+('Hamburguesas', true),
+('Bebidas', true),
+('Papas y Entradas', true),
+('Combos', true);
+
+-- 4. Insertar Productos vinculados a sus categorías
+INSERT INTO producto (nombre, descripcion, precio, stock, activo, categoria_id) VALUES 
+('Hamburguesa Clásica', 'Carne 150g, lechuga, tomate y queso', 16000.00, 40, true, 1),
+('Hamburguesa Especial', 'Doble carne, tocineta, queso cheddar y salsa especial', 24000.00, 30, true, 1),
+('Gaseosa 400ml', 'Bebida gaseosa en botella', 4500.00, 80, true, 2),
+('Jugo Natural', 'Jugo en agua o leche sabores variados', 6000.00, 25, true, 2),
+('Papas a la Francesa', 'Porción de 200g crocantes con sal marina', 7000.00, 50, true, 3);
+
+-- 5. Insertar Clientes (para Facturación Electrónica)
+INSERT INTO cliente (tipo_documento, numero_documento, nombre, apellido, telefono, correo, activo) VALUES 
+('Cédula de ciudadanía', '1098765432', 'Carlos', 'Gómez', '3101234567', 'carlos.gomez@correo.com', true),
+('NIT', '901234567-8', 'Inversiones', 'Alimentos SAS', '3209876543', 'contacto@alimentos.com', true);
+```
 
 ## Uso básico
 
@@ -105,6 +189,7 @@ El renderizado necesita una sesión gráfica. Produce siete PNG en `target/captu
 - [Guion de aceptación manual](docs/05-aceptacion-manual.md).
 - [Diagramas](docs/diagramas/).
 - [Exportaciones reales de SourceMonitor](docs/metricas/).
+- **Archivo de Enterprise Architect:** [`diagramas/diagramadeprueba.qea`](diagramas/diagramadeprueba.qea) (y copia en [`docs/diagramas/diagramadeprueba.qea`](docs/diagramas/diagramadeprueba.qea)), que contiene los 3 Diagramas de Clases y los 5 Diagramas de Casos de Uso organizados por módulos funcionales.
 
 Para generar otro checkpoint:
 
