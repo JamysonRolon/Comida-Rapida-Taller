@@ -16,6 +16,7 @@ import static org.mockito.Mockito.*;
 class ProductoServiceTest {
     @Mock ProductoRepository productos;
     @Mock CategoriaRepository categorias;
+    @Mock DetalleVentaRepository detallesVenta;
     @Mock SesionService sesion;
     @InjectMocks ProductoService service;
 
@@ -82,5 +83,23 @@ class ProductoServiceTest {
 
     @Test void informaProductoInexistente() {
         assertThrows(ProductoNoEncontradoException.class, () -> service.consultar(99L));
+    }
+
+    @Test void eliminaFisicamenteProductoSinVentas() {
+        Producto producto = DatosPrueba.producto(5);
+        when(productos.bloquear(1L)).thenReturn(Optional.of(producto));
+        when(detallesVenta.existsByProductoId(1L)).thenReturn(false);
+        service.eliminar(1L);
+        verify(productos).delete(producto);
+    }
+
+    @Test void desactivaProductoConVentasAlEliminar() {
+        Producto producto = DatosPrueba.producto(5);
+        when(productos.bloquear(1L)).thenReturn(Optional.of(producto));
+        when(detallesVenta.existsByProductoId(1L)).thenReturn(true);
+        assertThrows(DatosInvalidosException.class, () -> service.eliminar(1L));
+        assertFalse(producto.isActivo());
+        verify(productos).save(producto);
+        verify(productos, never()).delete(any());
     }
 }

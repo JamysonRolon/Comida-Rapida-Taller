@@ -52,6 +52,9 @@ public class ProductoController {
         tablaProductos.getColumns().get(3).setMaxWidth(65);
     }
 
+    private Button botonGuardar;
+    private Button botonEliminar;
+
     private VBox crearEditor() {
         formulario = new Formulario();
         formulario.texto("Nombre");
@@ -59,7 +62,11 @@ public class ProductoController {
         formulario.texto("Precio");
         formulario.texto("Stock");
         comboCategoria = formulario.opciones("Categoría");
-        VBox editor = new VBox(12, formulario, Controles.principal("Guardar producto", this::guardar),
+        botonGuardar = Controles.principal("Guardar nuevo producto", this::guardar);
+        botonEliminar = Controles.boton("Eliminar producto", this::eliminar);
+        botonEliminar.setDisable(true);
+
+        VBox editor = new VBox(12, formulario, botonGuardar, botonEliminar,
                 Controles.boton("Limpiar campos", this::limpiar));
         editor.setPrefWidth(330);
 
@@ -87,6 +94,12 @@ public class ProductoController {
         formulario.poner("Stock", String.valueOf(producto.getStock()));
         comboCategoria.getItems().stream().filter(categoria -> categoria.getId().equals(producto.getCategoria().getId()))
                 .findFirst().ifPresentOrElse(comboCategoria::setValue, () -> comboCategoria.setValue(null));
+        if (botonGuardar != null) {
+            botonGuardar.setText("Actualizar producto");
+        }
+        if (botonEliminar != null) {
+            botonEliminar.setDisable(false);
+        }
     }
 
     private void guardar() {
@@ -94,10 +107,29 @@ public class ProductoController {
         Producto datos = new Producto(formulario.valor("Nombre"), formulario.valor("Descripción"),
                 Controles.decimal(formulario.valor("Precio")), Controles.entero(formulario.valor("Stock"), "Stock"), comboCategoria.getValue());
         tareasFx.ejecutar(panelPagina, () -> elegido == null ? servicioProductos.registrar(datos)
-                : servicioProductos.actualizar(elegido.getId(), datos, elegido.getStock()), guardado -> {
+                : servicioProductos.actualizar(elegido.getId(), datos), guardado -> {
                     limpiar();
                     cargar();
+                    Dialogos.informar(elegido == null ? "Producto registrado exitosamente." : "Producto actualizado exitosamente.");
                 });
+    }
+
+    private void eliminar() {
+        Producto elegido = tablaProductos.getSelectionModel().getSelectedItem();
+        if (elegido == null) {
+            Dialogos.informar("Seleccione un producto en la tabla para eliminar.");
+            return;
+        }
+        if (Dialogos.confirmar("¿Está seguro de eliminar el producto '" + elegido.getNombre() + "'?")) {
+            tareasFx.ejecutar(panelPagina, () -> {
+                servicioProductos.eliminar(elegido.getId());
+                return true;
+            }, ok -> {
+                limpiar();
+                cargar();
+                Dialogos.informar("Producto eliminado exitosamente.");
+            });
+        }
     }
 
     private void limpiar() {
@@ -107,6 +139,12 @@ public class ProductoController {
         }
         if (comboCategoria != null) {
             comboCategoria.setValue(null);
+        }
+        if (botonGuardar != null) {
+            botonGuardar.setText("Guardar nuevo producto");
+        }
+        if (botonEliminar != null) {
+            botonEliminar.setDisable(true);
         }
     }
 }

@@ -1,8 +1,10 @@
 package com.comidasrapidas.service;
 
 import com.comidasrapidas.exception.ClienteNoEncontradoException;
+import com.comidasrapidas.exception.DatosInvalidosException;
 import com.comidasrapidas.model.Cliente;
 import com.comidasrapidas.repository.ClienteRepository;
+import com.comidasrapidas.repository.VentaRepository;
 import com.comidasrapidas.util.Validacion;
 import java.util.List;
 import java.util.Objects;
@@ -12,10 +14,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Service
 public class ClienteService {
     private final ClienteRepository clientes;
+    private final VentaRepository ventas;
     private final SesionService sesion;
 
-    public ClienteService(ClienteRepository clientes, SesionService sesion) {
+    public ClienteService(ClienteRepository clientes, VentaRepository ventas, SesionService sesion) {
         this.clientes = clientes;
+        this.ventas = ventas;
         this.sesion = sesion;
     }
 
@@ -51,6 +55,18 @@ public class ClienteService {
         Cliente existente = buscar(id);
         existente.actualizar(validar(datos, id));
         return existente;
+    }
+
+    @Transactional
+    public void eliminar(Long id) {
+        sesion.exigirAdministrador();
+        Cliente existente = buscar(id);
+        if (ventas.existsByClienteId(id)) {
+            existente.desactivar();
+            clientes.save(existente);
+            throw new DatosInvalidosException("No se puede borrar físicamente el cliente '" + existente.getNombre() + "' porque tiene ventas registradas en el historial. Ha sido desactivado.");
+        }
+        clientes.delete(existente);
     }
 
     @Transactional

@@ -15,11 +15,15 @@ import org.springframework.transaction.annotation.Transactional;
 public class ProductoService {
     private final ProductoRepository productos;
     private final CategoriaRepository categorias;
+    private final com.comidasrapidas.repository.DetalleVentaRepository detallesVenta;
     private final SesionService sesion;
 
-    public ProductoService(ProductoRepository productos, CategoriaRepository categorias, SesionService sesion) {
+    public ProductoService(ProductoRepository productos, CategoriaRepository categorias,
+                           com.comidasrapidas.repository.DetalleVentaRepository detallesVenta,
+                           SesionService sesion) {
         this.productos = productos;
         this.categorias = categorias;
+        this.detallesVenta = detallesVenta;
         this.sesion = sesion;
     }
 
@@ -43,6 +47,15 @@ public class ProductoService {
     }
 
     @Transactional
+    public Producto actualizar(Long id, Producto datos) {
+        sesion.exigirAdministrador();
+        Producto existente = bloquear(id);
+        Producto limpio = validar(datos);
+        existente.actualizar(limpio, limpio.getCategoria());
+        return existente;
+    }
+
+    @Transactional
     public Producto actualizar(Long id, Producto datos, int stockEsperado) {
         sesion.exigirAdministrador();
         Producto existente = bloquear(id);
@@ -51,6 +64,18 @@ public class ProductoService {
         Producto limpio = validar(datos);
         existente.actualizar(limpio, limpio.getCategoria());
         return existente;
+    }
+
+    @Transactional
+    public void eliminar(Long id) {
+        sesion.exigirAdministrador();
+        Producto existente = bloquear(id);
+        if (detallesVenta.existsByProductoId(id)) {
+            existente.desactivar();
+            productos.save(existente);
+            throw new DatosInvalidosException("No se puede borrar físicamente el producto '" + existente.getNombre() + "' porque tiene ventas registradas en el historial. Ha sido desactivado del menú.");
+        }
+        productos.delete(existente);
     }
 
     @Transactional

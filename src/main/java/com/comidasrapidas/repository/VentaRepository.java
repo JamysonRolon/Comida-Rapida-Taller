@@ -22,6 +22,8 @@ public interface VentaRepository extends JpaRepository<Venta, Long> {
 
     @EntityGraph(attributePaths = {"cliente", "usuario"})
     List<Venta> findAllByOrderByFechaHoraDesc();
+
+    boolean existsByClienteId(Long clienteId);
 }
 
 

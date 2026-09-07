@@ -31,6 +31,9 @@ public class ClienteController {
         this.tareasFx = tareasFx;
     }
 
+    private Button botonGuardar;
+    private Button botonEliminar;
+
     public Parent vista(boolean administrador) {
         this.esAdministrador = administrador;
         tablaClientes = new TableView<>();
@@ -39,7 +42,15 @@ public class ClienteController {
         configurarColumnas();
         formulario = crearFormulario();
 
-        VBox editor = new VBox(12, formulario, Controles.principal("Guardar cliente", this::guardar),
+        botonGuardar = Controles.principal("Guardar nuevo cliente", this::guardar);
+        botonEliminar = Controles.boton("Eliminar cliente", this::eliminar);
+        botonEliminar.setDisable(true);
+        if (!esAdministrador) {
+            botonEliminar.setVisible(false);
+            botonEliminar.setManaged(false);
+        }
+
+        VBox editor = new VBox(12, formulario, botonGuardar, botonEliminar,
                 Controles.boton("Limpiar campos", this::limpiar));
         editor.setPrefWidth(340);
 
@@ -99,7 +110,7 @@ public class ClienteController {
         if (cliente == null || !esAdministrador) {
             return;
         }
-        if (cliente.getTipoDocumento() != null && (cliente.getTipoDocumento().equalsIgnoreCase("NIT") || cliente.getTipoDocumento().equalsIgnoreCase(NIT))) {
+        if (cliente.getTipoDocumento() != null && cliente.getTipoDocumento().equalsIgnoreCase("NIT")) {
             comboTipoDocumento.setValue(NIT);
         } else {
             comboTipoDocumento.setValue(CEDULA_CIUDADANIA);
@@ -109,6 +120,12 @@ public class ClienteController {
         formulario.poner("Apellido", cliente.getApellido());
         formulario.poner("Teléfono", cliente.getTelefono());
         formulario.poner("Correo", cliente.getCorreo());
+        if (botonGuardar != null) {
+            botonGuardar.setText("Actualizar cliente");
+        }
+        if (botonEliminar != null && esAdministrador) {
+            botonEliminar.setDisable(false);
+        }
     }
 
     private void guardar() {
@@ -117,7 +134,30 @@ public class ClienteController {
                 formulario.valor("Nombre"), formulario.valor("Apellido"), formulario.valor("Teléfono"), formulario.valor("Correo"));
         Cliente elegido = esAdministrador ? tablaClientes.getSelectionModel().getSelectedItem() : null;
         tareasFx.ejecutar(panelPagina, () -> elegido == null ? servicioClientes.registrar(datosCliente)
-                : servicioClientes.actualizar(elegido.getId(), datosCliente), guardado -> cargar());
+                : servicioClientes.actualizar(elegido.getId(), datosCliente), guardado -> {
+                    limpiar();
+                    cargar();
+                    Dialogos.informar(elegido == null ? "Cliente registrado exitosamente." : "Cliente actualizado exitosamente.");
+                });
+    }
+
+    private void eliminar() {
+        Cliente elegido = tablaClientes.getSelectionModel().getSelectedItem();
+        if (elegido == null) {
+            Dialogos.informar("Seleccione un cliente en la tabla para eliminar.");
+            return;
+        }
+        String nombreCompleto = elegido.getNombre() + (elegido.getApellido() != null && !elegido.getApellido().isBlank() ? " " + elegido.getApellido() : "");
+        if (Dialogos.confirmar("¿Está seguro de eliminar el cliente '" + nombreCompleto + "'?")) {
+            tareasFx.ejecutar(panelPagina, () -> {
+                servicioClientes.eliminar(elegido.getId());
+                return true;
+            }, ok -> {
+                limpiar();
+                cargar();
+                Dialogos.informar("Cliente eliminado exitosamente.");
+            });
+        }
     }
 
     private void limpiar() {
@@ -127,6 +167,12 @@ public class ClienteController {
         }
         if (comboTipoDocumento != null) {
             comboTipoDocumento.setValue(CEDULA_CIUDADANIA);
+        }
+        if (botonGuardar != null) {
+            botonGuardar.setText("Guardar nuevo cliente");
+        }
+        if (botonEliminar != null) {
+            botonEliminar.setDisable(true);
         }
     }
 }

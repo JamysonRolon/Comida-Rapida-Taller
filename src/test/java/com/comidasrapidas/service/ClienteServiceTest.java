@@ -14,6 +14,7 @@ import static org.mockito.Mockito.*;
 @ExtendWith(MockitoExtension.class)
 class ClienteServiceTest {
     @Mock ClienteRepository repository;
+    @Mock com.comidasrapidas.repository.VentaRepository ventas;
     @Mock SesionService sesion;
     @InjectMocks ClienteService service;
 
@@ -80,5 +81,23 @@ class ClienteServiceTest {
         doThrow(new AccesoDenegadoException("Sin permiso")).when(sesion).exigirAdministrador();
         assertThrows(AccesoDenegadoException.class, () -> service.actualizar(1L, DatosPrueba.cliente()));
         verifyNoInteractions(repository);
+    }
+
+    @Test void eliminaFisicamenteClienteSinVentas() {
+        Cliente cliente = DatosPrueba.id(DatosPrueba.cliente(), 1);
+        when(repository.findById(1L)).thenReturn(Optional.of(cliente));
+        when(ventas.existsByClienteId(1L)).thenReturn(false);
+        service.eliminar(1L);
+        verify(repository).delete(cliente);
+    }
+
+    @Test void desactivaClienteConVentasAlEliminar() {
+        Cliente cliente = DatosPrueba.id(DatosPrueba.cliente(), 1);
+        when(repository.findById(1L)).thenReturn(Optional.of(cliente));
+        when(ventas.existsByClienteId(1L)).thenReturn(true);
+        assertThrows(DatosInvalidosException.class, () -> service.eliminar(1L));
+        assertFalse(cliente.isActivo());
+        verify(repository).save(cliente);
+        verify(repository, never()).delete(any());
     }
 }

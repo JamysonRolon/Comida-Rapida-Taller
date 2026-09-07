@@ -7,4 +7,6 @@ import org.springframework.data.jpa.repository.*;
 import org.springframework.data.repository.query.Param;
 
 public interface DetalleVentaRepository extends JpaRepository<DetalleVenta, Long> {
+    boolean existsByProductoId(Long productoId);
 }
+
