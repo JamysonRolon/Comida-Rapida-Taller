@@ -67,10 +67,15 @@ public class ClienteController {
     }
 
     private void configurarColumnas() {
+        Controles.columna(tablaClientes, "Tipo de documento", Cliente::getTipoDocumento);
         Controles.columna(tablaClientes, "Documento", Cliente::getNumeroDocumento);
         Controles.columna(tablaClientes, "Nombre", cliente -> cliente.getNombre() + " " + cliente.getApellido());
         Controles.columna(tablaClientes, "Teléfono", Cliente::getTelefono);
         Controles.columna(tablaClientes, "Correo", Cliente::getCorreo);
+        if (!tablaClientes.getColumns().isEmpty()) {
+            tablaClientes.getColumns().get(0).setMinWidth(150);
+            tablaClientes.getColumns().get(1).setMinWidth(110);
+        }
     }
 
 
