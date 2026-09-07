@@ -1,0 +1,39 @@
+@startuml
+!pragma layout smetana
+skinparam defaultFontName Segoe UI
+skinparam shadowing false
+title Arquitectura local por capas
+package "Presentación JavaFX" {
+  [DesktopApp]
+  [Controladores de vistas]
+  [FxTasks]
+}
+package "Servicios" {
+  [AuthService y SesionService]
+  [Servicios CRUD]
+  [VentaService]
+  [CarritoService]
+  [ComprobanteService]
+}
+package "Persistencia" {
+  [Repositorios Spring Data JPA]
+  [Entidades Hibernate]
+}
+database "PostgreSQL local\n6 tablas" as DB
+[DesktopApp] --> [Controladores de vistas]
+[Controladores de vistas] --> [FxTasks]
+[FxTasks] --> [Servicios CRUD]
+[FxTasks] --> [VentaService]
+[FxTasks] --> [AuthService y SesionService]
+[Controladores de vistas] --> [CarritoService]
+[Controladores de vistas] --> [ComprobanteService]
+[Servicios CRUD] --> [Repositorios Spring Data JPA]
+[VentaService] --> [Repositorios Spring Data JPA]
+[AuthService y SesionService] --> [Repositorios Spring Data JPA]
+[Repositorios Spring Data JPA] --> [Entidades Hibernate]
+[Entidades Hibernate] --> DB
+note bottom
+Spring Boot configura e inyecta las dependencias.
+No se inicia servidor web ni se exponen endpoints.
+end note
+@enduml

@@ -1,0 +1,74 @@
+@startuml
+!pragma layout smetana
+skinparam defaultFontName Segoe UI
+skinparam shadowing false
+hide circle
+title Modelo entidad-relación · PostgreSQL
+entity usuario {
+  * id : BIGINT <<PK>>
+  --
+  * nombre : VARCHAR(100)
+  * username : VARCHAR(60) <<UQ>>
+  * password : VARCHAR(100)
+  * rol : VARCHAR(20)
+  * activo : BOOLEAN
+}
+entity cliente {
+  * id : BIGINT <<PK>>
+  --
+  * tipo_documento : VARCHAR(20)
+  * numero_documento : VARCHAR(30) <<UQ>>
+  * nombre : VARCHAR(100)
+  * apellido : VARCHAR(100)
+  * telefono : VARCHAR(30)
+  * correo : VARCHAR(150)
+  * activo : BOOLEAN
+}
+entity categoria {
+  * id : BIGINT <<PK>>
+  --
+  * nombre : VARCHAR(80) <<UQ lower>>
+  * activo : BOOLEAN
+}
+entity producto {
+  * id : BIGINT <<PK>>
+  --
+  * nombre : VARCHAR(100)
+  * descripcion : VARCHAR(500)
+  * precio : NUMERIC(14,2)
+  * stock : INTEGER
+  * activo : BOOLEAN
+  * categoria_id : BIGINT <<FK>>
+}
+entity venta {
+  * id : BIGINT <<PK>>
+  --
+  * fecha_hora : TIMESTAMPTZ
+  * total : NUMERIC(14,2)
+  cliente_id : BIGINT <<FK, NULL>>
+  * usuario_id : BIGINT <<FK>>
+}
+entity detalle_venta {
+  * id : BIGINT <<PK>>
+  --
+  * venta_id : BIGINT <<FK>>
+  * producto_id : BIGINT <<FK>>
+  * cantidad : INTEGER
+  * precio_unitario : NUMERIC(14,2)
+  * subtotal : NUMERIC(14,2)
+}
+categoria ||--o{ producto
+usuario ||--o{ venta
+cliente |o--o{ venta
+venta ||--|{ detalle_venta
+producto ||--o{ detalle_venta
+note bottom of producto
+precio > 0
+stock >= 0
+end note
+note bottom of detalle_venta
+cantidad > 0
+subtotal = cantidad × precio_unitario
+UNIQUE(venta_id, producto_id)
+end note
+@enduml

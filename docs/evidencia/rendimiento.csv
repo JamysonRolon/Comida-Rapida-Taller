@@ -1,0 +1,9 @@
+operacion;muestras;calentamiento;p95_ms;max_ms;criterio_ms
+Consultar 1000 productos;30;5;104.672;159.932;1000
+Consultar 1000 clientes;30;5;46.500;50.933;1000
+Registrar cliente;30;5;34.240;34.614;1000
+Actualizar cliente;30;5;20.137;26.807;1000
+Desactivar cliente;30;5;30.447;36.804;1000
+Registrar producto;30;5;18.005;19.598;1000
+Actualizar producto;30;5;73.865;85.957;1000
+Desactivar producto;30;5;43.347;72.641;1000

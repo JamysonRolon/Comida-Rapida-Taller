@@ -1,0 +1,36 @@
+@startuml
+!pragma layout smetana
+skinparam defaultFontName Segoe UI
+skinparam shadowing false
+left to right direction
+actor Administrador
+actor Cajero
+rectangle "Gestión de comidas rápidas" {
+  usecase "Iniciar / cerrar sesión" as Login
+  usecase "Administrar empleados" as Usuarios
+  usecase "Registrar / consultar clientes" as Clientes
+  usecase "Actualizar / desactivar clientes" as EditarClientes
+  usecase "Administrar categorías" as Categorias
+  usecase "Consultar productos y categorías" as Consulta
+  usecase "Administrar productos y stock" as Productos
+  usecase "Registrar venta en efectivo" as Venta
+  usecase "Consultar ventas y total diario" as Ventas
+  usecase "Ver / guardar comprobante" as Comprobante
+}
+Administrador --> Login
+Administrador --> Usuarios
+Administrador --> Clientes
+Administrador --> EditarClientes
+Administrador --> Categorias
+Administrador --> Consulta
+Administrador --> Productos
+Administrador --> Venta
+Administrador --> Ventas
+Administrador --> Comprobante
+Cajero --> Login
+Cajero --> Clientes
+Cajero --> Consulta
+Cajero --> Venta
+Cajero --> Ventas
+Cajero --> Comprobante
+@enduml

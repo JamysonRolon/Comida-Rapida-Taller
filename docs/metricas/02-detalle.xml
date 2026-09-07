@@ -1,0 +1,3050 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<sourcemonitor_metrics>
+  <project version="3.5">
+    <project_name>comidas-rapidas</project_name>
+    <project_directory>src/main/java</project_directory>
+    <project_language>Java</project_language>
+    <ignore_headers_footers>false</ignore_headers_footers>
+    <export_raw_numbers>false</export_raw_numbers>
+    <checkpoints checkpoint_count="1">
+      <metric_names name_count="15">
+        <metric_name id="M0" type="number">Lines</metric_name>
+        <metric_name id="M1" type="number">Statements</metric_name>
+        <metric_name id="M2" type="percent" divisor="M1">Percent Branch Statements</metric_name>
+        <metric_name id="M3" type="number">Method Call Statements</metric_name>
+        <metric_name id="M4" type="percent" divisor="M0">Percent Lines with Comments</metric_name>
+        <metric_name id="M5" type="number">Classes and Interfaces</metric_name>
+        <metric_name id="M6" type="ratio" divisor="M5">Methods per Class</metric_name>
+        <metric_name id="M7" type="ratio" divisor="M6">Average Statements per Method</metric_name>
+        <metric_name id="M8" type="string">Line Number of Most Complex Method</metric_name>
+        <metric_name id="M9" type="string">Name of Most Complex Method</metric_name>
+        <metric_name id="M10" type="maximum">Maximum Complexity</metric_name>
+        <metric_name id="M11" type="string">Line Number of Deepest Block</metric_name>
+        <metric_name id="M12" type="maximum">Maximum Block Depth</metric_name>
+        <metric_name id="M13" type="average" values="block_depths">Average Block Depth</metric_name>
+        <metric_name id="M14" type="average">Average Complexity</metric_name>
+      </metric_names>
+      <checkpoint checkpoint_name="02-verificacion-final" checkpoint_date="2026-09-06" ignore_blank_lines="false" modified_complexity="false">
+        <files file_count="46">
+          <file file_name="com\comidasrapidas\DesktopApp.java">
+            <metrics metric_count="15">
+              <metric id="M0">61</metric>
+              <metric id="M1">45</metric>
+              <metric id="M2">2,2</metric>
+              <metric id="M3">16</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">7,00</metric>
+              <metric id="M7">3,71</metric>
+              <metric id="M8">56</metric>
+              <metric id="M9">DesktopApp.stop()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">34</metric>
+              <metric id="M12">4</metric>
+              <metric id="M13">1,47</metric>
+              <metric id="M14">1,14</metric>
+            </metrics>
+            <method_metrics method_count="7">
+              <method name="DesktopApp.iniciarContexto()" line="29">
+                <complexity>1</complexity>
+                <statements>7</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>6</calls>
+              </method>
+              <method name="DesktopApp.mostrarFallo()" line="47">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="DesktopApp.start()" line="18">
+                <complexity>1</complexity>
+                <statements>8</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>7</calls>
+              </method>
+              <method name="DesktopApp.stop()" line="56">
+                <complexity>2</complexity>
+                <statements>2</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="iniciarContexto().javafx.concurrent.Task&lt;ConfigurableApplicationContext&gt;" line="30">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="iniciarContexto().tarea.setOnSucceeded()" line="37">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="javafx.concurrent.Task&lt;ConfigurableApplicationContext&gt;.call()" line="32">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">12</block_depth>
+              <block_depth level="1">7</block_depth>
+              <block_depth level="2">20</block_depth>
+              <block_depth level="3">5</block_depth>
+              <block_depth level="4">1</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\Launcher.java">
+            <metrics metric_count="15">
+              <metric id="M0">12</metric>
+              <metric id="M1">6</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">1</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">2,00</metric>
+              <metric id="M7">0,50</metric>
+              <metric id="M8">6</metric>
+              <metric id="M9">Launcher.main()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">10</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">0,67</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="2">
+              <method name="Launcher.Launcher()" line="6">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Launcher.main()" line="9">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">3</block_depth>
+              <block_depth level="1">2</block_depth>
+              <block_depth level="2">1</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\config\AppConfig.java">
+            <metrics metric_count="15">
+              <metric id="M0">25</metric>
+              <metric id="M1">19</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">3</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">2,00</metric>
+              <metric id="M7">1,00</metric>
+              <metric id="M8">17</metric>
+              <metric id="M9">AppConfig.Value()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">18</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">0,42</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="2">
+              <method name="AppConfig.passwordEncoder()" line="17">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="AppConfig.Value()" line="22">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">13</block_depth>
+              <block_depth level="1">4</block_depth>
+              <block_depth level="2">2</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\CategoriaController.java">
+            <metrics metric_count="15">
+              <metric id="M0">76</metric>
+              <metric id="M1">53</metric>
+              <metric id="M2">5,7</metric>
+              <metric id="M3">31</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">9,00</metric>
+              <metric id="M7">3,44</metric>
+              <metric id="M8">24</metric>
+              <metric id="M9">CategoriaController.desactivar()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">46</metric>
+              <metric id="M12">4</metric>
+              <metric id="M13">1,62</metric>
+              <metric id="M14">1,50</metric>
+            </metrics>
+            <method_metrics method_count="8">
+              <method name="CategoriaController.agregarEditor()" line="37">
+                <complexity>2</complexity>
+                <statements>6</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>8</calls>
+              </method>
+              <method name="CategoriaController.cargar()" line="51">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="CategoriaController.CategoriaController()" line="19">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="CategoriaController.desactivar()" line="65">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="CategoriaController.guardar()" line="55">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="CategoriaController.limpiar()" line="72">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="CategoriaController.vista()" line="24">
+                <complexity>2</complexity>
+                <statements>8</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>7</calls>
+              </method>
+              <method name="guardar().categorias.actualizar()" line="59">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">10</block_depth>
+              <block_depth level="1">12</block_depth>
+              <block_depth level="2">22</block_depth>
+              <block_depth level="3">6</block_depth>
+              <block_depth level="4">3</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\ClienteController.java">
+            <metrics metric_count="15">
+              <metric id="M0">118</metric>
+              <metric id="M1">90</metric>
+              <metric id="M2">3,3</metric>
+              <metric id="M3">61</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">12,00</metric>
+              <metric id="M7">5,08</metric>
+              <metric id="M8">87</metric>
+              <metric id="M9">ClienteController.seleccionar()</metric>
+              <metric id="M10">3</metric>
+              <metric id="M11">110</metric>
+              <metric id="M12">4</metric>
+              <metric id="M13">1,69</metric>
+              <metric id="M14">1,45</metric>
+            </metrics>
+            <method_metrics method_count="11">
+              <method name="cargar().clientes.listar()" line="81">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ClienteController.buscador()" line="70">
+                <complexity>1</complexity>
+                <statements>6</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>4</calls>
+              </method>
+              <method name="ClienteController.cargar()" line="80">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ClienteController.ClienteController()" line="23">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="ClienteController.crearColumnas()" line="51">
+                <complexity>1</complexity>
+                <statements>5</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>7</calls>
+              </method>
+              <method name="ClienteController.crearFormulario()" line="59">
+                <complexity>1</complexity>
+                <statements>8</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>6</calls>
+              </method>
+              <method name="ClienteController.desactivar()" line="107">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ClienteController.guardar()" line="99">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>11</calls>
+              </method>
+              <method name="ClienteController.limpiar()" line="114">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ClienteController.seleccionar()" line="87">
+                <complexity>3</complexity>
+                <statements>8</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>6</calls>
+              </method>
+              <method name="ClienteController.vista()" line="28">
+                <complexity>2</complexity>
+                <statements>17</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>16</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">11</block_depth>
+              <block_depth level="1">18</block_depth>
+              <block_depth level="2">51</block_depth>
+              <block_depth level="3">8</block_depth>
+              <block_depth level="4">2</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\ComprobanteController.java">
+            <metrics metric_count="15">
+              <metric id="M0">57</metric>
+              <metric id="M1">44</metric>
+              <metric id="M2">2,3</metric>
+              <metric id="M3">21</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">3,00</metric>
+              <metric id="M7">8,33</metric>
+              <metric id="M8">44</metric>
+              <metric id="M9">ComprobanteController.guardar()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">51</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,27</metric>
+              <metric id="M14">1,33</metric>
+            </metrics>
+            <method_metrics method_count="3">
+              <method name="ComprobanteController.ComprobanteController()" line="20">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="ComprobanteController.guardar()" line="44">
+                <complexity>2</complexity>
+                <statements>8</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>7</calls>
+              </method>
+              <method name="ComprobanteController.mostrar()" line="25">
+                <complexity>1</complexity>
+                <statements>15</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>14</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">14</block_depth>
+              <block_depth level="1">5</block_depth>
+              <block_depth level="2">24</block_depth>
+              <block_depth level="3">1</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\Controles.java">
+            <metrics metric_count="15">
+              <metric id="M0">86</metric>
+              <metric id="M1">60</metric>
+              <metric id="M2">3,3</metric>
+              <metric id="M3">23</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">11,00</metric>
+              <metric id="M7">3,64</metric>
+              <metric id="M8">63</metric>
+              <metric id="M9">?(instance of TableCell&lt;&gt;).updateItem()</metric>
+              <metric id="M10">3</metric>
+              <metric id="M11">64</metric>
+              <metric id="M12">4</metric>
+              <metric id="M13">1,70</metric>
+              <metric id="M14">1,55</metric>
+            </metrics>
+            <method_metrics method_count="11">
+              <method name="?(instance of TableCell&lt;&gt;).updateItem()" line="63">
+                <complexity>3</complexity>
+                <statements>3</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Controles.boton()" line="16">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="Controles.celdaConAyuda()" line="60">
+                <complexity>3</complexity>
+                <statements>4</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Controles.columna()" line="44">
+                <complexity>1</complexity>
+                <statements>7</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>8</calls>
+              </method>
+              <method name="Controles.Controles()" line="13">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Controles.decimal()" line="79">
+                <complexity>2</complexity>
+                <statements>4</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Controles.entero()" line="71">
+                <complexity>2</complexity>
+                <statements>4</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="Controles.fila()" line="40">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Controles.pagina()" line="28">
+                <complexity>1</complexity>
+                <statements>9</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>5</calls>
+              </method>
+              <method name="Controles.principal()" line="22">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="Controles.seleccionado()" line="54">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">10</block_depth>
+              <block_depth level="1">10</block_depth>
+              <block_depth level="2">31</block_depth>
+              <block_depth level="3">6</block_depth>
+              <block_depth level="4">3</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\Dialogos.java">
+            <metrics metric_count="15">
+              <metric id="M0">57</metric>
+              <metric id="M1">37</metric>
+              <metric id="M2">8,1</metric>
+              <metric id="M3">15</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">6,00</metric>
+              <metric id="M7">3,67</metric>
+              <metric id="M8">46</metric>
+              <metric id="M9">Dialogos.mensaje()</metric>
+              <metric id="M10">7</metric>
+              <metric id="M11">18</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,49</metric>
+              <metric id="M14">2,17</metric>
+            </metrics>
+            <method_metrics method_count="6">
+              <method name="Dialogos.confirmar()" line="24">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Dialogos.Dialogos()" line="13">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Dialogos.ejecutar()" line="16">
+                <complexity>2</complexity>
+                <statements>4</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="Dialogos.error()" line="38">
+                <complexity>1</complexity>
+                <statements>5</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>5</calls>
+              </method>
+              <method name="Dialogos.informar()" line="31">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Dialogos.mensaje()" line="46">
+                <complexity>7</complexity>
+                <statements>5</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">8</block_depth>
+              <block_depth level="1">7</block_depth>
+              <block_depth level="2">18</block_depth>
+              <block_depth level="3">4</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\Formulario.java">
+            <metrics metric_count="15">
+              <metric id="M0">58</metric>
+              <metric id="M1">39</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">16</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">8,00</metric>
+              <metric id="M7">2,75</metric>
+              <metric id="M8">13</metric>
+              <metric id="M9">Formulario.limpiar()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">14</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,38</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="8">
+              <method name="Formulario.agregar()" line="40">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Formulario.Formulario()" line="13">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Formulario.limpiar()" line="55">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="Formulario.opciones()" line="33">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Formulario.password()" line="26">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="Formulario.poner()" line="51">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="Formulario.texto()" line="19">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="Formulario.valor()" line="47">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">7</block_depth>
+              <block_depth level="1">10</block_depth>
+              <block_depth level="2">22</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\FxTasks.java">
+            <metrics metric_count="15">
+              <metric id="M0">52</metric>
+              <metric id="M1">40</metric>
+              <metric id="M2">5,0</metric>
+              <metric id="M3">17</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">6,00</metric>
+              <metric id="M7">3,50</metric>
+              <metric id="M8">22</metric>
+              <metric id="M9">FxTasks.ejecutar()</metric>
+              <metric id="M10">3</metric>
+              <metric id="M11">32</metric>
+              <metric id="M12">4</metric>
+              <metric id="M13">1,35</metric>
+              <metric id="M14">1,50</metric>
+            </metrics>
+            <method_metrics method_count="6">
+              <method name="ejecutar().Task&lt;T&gt;" line="29">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="FxTasks.cerrar()" line="49">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="FxTasks.completar()" line="40">
+                <complexity>2</complexity>
+                <statements>4</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="FxTasks.ejecutar()" line="22">
+                <complexity>3</complexity>
+                <statements>5</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>8</calls>
+              </method>
+              <method name="FxTasks.Executors.newSingleThreadExecutor()" line="16">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="Task&lt;T&gt;.call()" line="31">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">13</block_depth>
+              <block_depth level="1">6</block_depth>
+              <block_depth level="2">16</block_depth>
+              <block_depth level="3">4</block_depth>
+              <block_depth level="4">1</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\HistorialController.java">
+            <metrics metric_count="15">
+              <metric id="M0">63</metric>
+              <metric id="M1">48</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">28</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">5,00</metric>
+              <metric id="M7">4,80</metric>
+              <metric id="M8">31</metric>
+              <metric id="M9">HistorialController.vista()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">52</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,29</metric>
+              <metric id="M14">1,20</metric>
+            </metrics>
+            <method_metrics method_count="5">
+              <method name="cargar().ventas.consultarDia()" line="51">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>5</calls>
+              </method>
+              <method name="HistorialController.cargar()" line="49">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>5</calls>
+              </method>
+              <method name="HistorialController.comprobante()" line="58">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>5</calls>
+              </method>
+              <method name="HistorialController.HistorialController()" line="24">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="HistorialController.vista()" line="31">
+                <complexity>2</complexity>
+                <statements>13</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>16</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">12</block_depth>
+              <block_depth level="1">12</block_depth>
+              <block_depth level="2">22</block_depth>
+              <block_depth level="3">2</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\LoginController.java">
+            <metrics metric_count="15">
+              <metric id="M0">60</metric>
+              <metric id="M1">43</metric>
+              <metric id="M2">4,7</metric>
+              <metric id="M3">22</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">5,00</metric>
+              <metric id="M7">5,60</metric>
+              <metric id="M8">27</metric>
+              <metric id="M9">LoginController.formulario()</metric>
+              <metric id="M10">5</metric>
+              <metric id="M11">52</metric>
+              <metric id="M12">4</metric>
+              <metric id="M13">1,63</metric>
+              <metric id="M14">2,40</metric>
+            </metrics>
+            <method_metrics method_count="5">
+              <method name="ingresar().tareas.ejecutar()" line="50">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="LoginController.formulario()" line="27">
+                <complexity>5</complexity>
+                <statements>12</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>10</calls>
+              </method>
+              <method name="LoginController.ingresar()" line="46">
+                <complexity>3</complexity>
+                <statements>6</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>5</calls>
+              </method>
+              <method name="LoginController.LoginController()" line="15">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="LoginController.mostrar()" line="21">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>4</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">8</block_depth>
+              <block_depth level="1">7</block_depth>
+              <block_depth level="2">22</block_depth>
+              <block_depth level="3">5</block_depth>
+              <block_depth level="4">1</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\MainController.java">
+            <metrics metric_count="15">
+              <metric id="M0">89</metric>
+              <metric id="M1">70</metric>
+              <metric id="M2">2,9</metric>
+              <metric id="M3">34</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">6,00</metric>
+              <metric id="M7">6,67</metric>
+              <metric id="M8">81</metric>
+              <metric id="M9">MainController.cerrar()</metric>
+              <metric id="M10">3</metric>
+              <metric id="M11">66</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,39</metric>
+              <metric id="M14">1,50</metric>
+            </metrics>
+            <method_metrics method_count="6">
+              <method name="MainController.agregar()" line="71">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>4</calls>
+              </method>
+              <method name="MainController.cerrar()" line="81">
+                <complexity>3</complexity>
+                <statements>5</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>6</calls>
+              </method>
+              <method name="MainController.MainController()" line="28">
+                <complexity>1</complexity>
+                <statements>8</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="MainController.menu()" line="51">
+                <complexity>2</complexity>
+                <statements>16</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>16</calls>
+              </method>
+              <method name="MainController.mostrar()" line="41">
+                <complexity>1</complexity>
+                <statements>7</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>7</calls>
+              </method>
+              <method name="MainController.navegar()" line="77">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">15</block_depth>
+              <block_depth level="1">15</block_depth>
+              <block_depth level="2">38</block_depth>
+              <block_depth level="3">2</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\ProductoController.java">
+            <metrics metric_count="15">
+              <metric id="M0">115</metric>
+              <metric id="M1">87</metric>
+              <metric id="M2">4,6</metric>
+              <metric id="M3">59</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">12,00</metric>
+              <metric id="M7">4,92</metric>
+              <metric id="M8">29</metric>
+              <metric id="M9">cargar().productos.listar()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">75</metric>
+              <metric id="M12">4</metric>
+              <metric id="M13">1,70</metric>
+              <metric id="M14">1,55</metric>
+            </metrics>
+            <method_metrics method_count="11">
+              <method name="cargar().productos.listar()" line="72">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="guardar().productos.actualizar()" line="97">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ProductoController.cargar()" line="71">
+                <complexity>2</complexity>
+                <statements>4</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="ProductoController.columnas()" line="46">
+                <complexity>1</complexity>
+                <statements>7</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>9</calls>
+              </method>
+              <method name="ProductoController.desactivar()" line="103">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ProductoController.editor()" line="56">
+                <complexity>1</complexity>
+                <statements>10</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>11</calls>
+              </method>
+              <method name="ProductoController.guardar()" line="92">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ProductoController.limpiar()" line="110">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="ProductoController.ProductoController()" line="23">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="ProductoController.seleccionar()" line="80">
+                <complexity>2</complexity>
+                <statements>7</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>8</calls>
+              </method>
+              <method name="ProductoController.vista()" line="29">
+                <complexity>2</complexity>
+                <statements>12</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>8</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">12</block_depth>
+              <block_depth level="1">16</block_depth>
+              <block_depth level="2">48</block_depth>
+              <block_depth level="3">8</block_depth>
+              <block_depth level="4">3</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\UsuarioController.java">
+            <metrics metric_count="15">
+              <metric id="M0">85</metric>
+              <metric id="M1">67</metric>
+              <metric id="M2">3,0</metric>
+              <metric id="M3">39</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">10,00</metric>
+              <metric id="M7">4,20</metric>
+              <metric id="M8">68</metric>
+              <metric id="M9">UsuarioController.desactivar()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">72</metric>
+              <metric id="M12">4</metric>
+              <metric id="M13">1,72</metric>
+              <metric id="M14">1,25</metric>
+            </metrics>
+            <method_metrics method_count="8">
+              <method name="crear().usuarios.registrar()" line="62">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="UsuarioController.cargar()" line="53">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="UsuarioController.crear()" line="57">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="UsuarioController.crearFormulario()" line="43">
+                <complexity>1</complexity>
+                <statements>7</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>6</calls>
+              </method>
+              <method name="UsuarioController.desactivar()" line="79">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="UsuarioController.password()" line="68">
+                <complexity>2</complexity>
+                <statements>5</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="UsuarioController.UsuarioController()" line="22">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="UsuarioController.vista()" line="27">
+                <complexity>1</complexity>
+                <statements>9</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>13</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">12</block_depth>
+              <block_depth level="1">13</block_depth>
+              <block_depth level="2">30</block_depth>
+              <block_depth level="3">6</block_depth>
+              <block_depth level="4">6</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\controller\VentaController.java">
+            <metrics metric_count="15">
+              <metric id="M0">125</metric>
+              <metric id="M1">93</metric>
+              <metric id="M2">2,2</metric>
+              <metric id="M3">61</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">13,00</metric>
+              <metric id="M7">4,54</metric>
+              <metric id="M8">111</metric>
+              <metric id="M9">VentaController.confirmar()</metric>
+              <metric id="M10">3</metric>
+              <metric id="M11">83</metric>
+              <metric id="M12">4</metric>
+              <metric id="M13">1,68</metric>
+              <metric id="M14">1,31</metric>
+            </metrics>
+            <method_metrics method_count="13">
+              <method name="cargar().productos.listar()" line="79">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="confirmar().ventas.registrar()" line="118">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>4</calls>
+              </method>
+              <method name="productos.listar().clientes.listar()" line="82">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="VentaController.agregar()" line="89">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="VentaController.cargar()" line="78">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>4</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="VentaController.columnas()" line="71">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>6</calls>
+              </method>
+              <method name="VentaController.confirmar()" line="111">
+                <complexity>3</complexity>
+                <statements>5</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>4</calls>
+              </method>
+              <method name="VentaController.crearFormulario()" line="55">
+                <complexity>2</complexity>
+                <statements>12</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>14</calls>
+              </method>
+              <method name="VentaController.quitar()" line="94">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="VentaController.refrescar()" line="106">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="VentaController.vaciar()" line="99">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="VentaController.VentaController()" line="28">
+                <complexity>1</complexity>
+                <statements>6</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="VentaController.vista()" line="38">
+                <complexity>1</complexity>
+                <statements>9</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>13</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">11</block_depth>
+              <block_depth level="1">23</block_depth>
+              <block_depth level="2">46</block_depth>
+              <block_depth level="3">11</block_depth>
+              <block_depth level="4">2</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\exception\AccesoDenegadoException.java">
+            <metrics metric_count="15">
+              <metric id="M0">8</metric>
+              <metric id="M1">4</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">1</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">1,00</metric>
+              <metric id="M7">1,00</metric>
+              <metric id="M8">4</metric>
+              <metric id="M9">AccesoDenegadoException.AccesoDenegadoException()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">5</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">0,75</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="1">
+              <method name="AccesoDenegadoException.AccesoDenegadoException()" line="4">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">2</block_depth>
+              <block_depth level="1">1</block_depth>
+              <block_depth level="2">1</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\exception\ClienteNoEncontradoException.java">
+            <metrics metric_count="15">
+              <metric id="M0">8</metric>
+              <metric id="M1">4</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">1</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">1,00</metric>
+              <metric id="M7">1,00</metric>
+              <metric id="M8">4</metric>
+              <metric id="M9">ClienteNoEncontradoException.ClienteNoEncontradoException()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">5</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">0,75</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="1">
+              <method name="ClienteNoEncontradoException.ClienteNoEncontradoException()" line="4">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">2</block_depth>
+              <block_depth level="1">1</block_depth>
+              <block_depth level="2">1</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\exception\DatosInvalidosException.java">
+            <metrics metric_count="15">
+              <metric id="M0">8</metric>
+              <metric id="M1">4</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">1</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">1,00</metric>
+              <metric id="M7">1,00</metric>
+              <metric id="M8">4</metric>
+              <metric id="M9">DatosInvalidosException.DatosInvalidosException()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">5</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">0,75</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="1">
+              <method name="DatosInvalidosException.DatosInvalidosException()" line="4">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">2</block_depth>
+              <block_depth level="1">1</block_depth>
+              <block_depth level="2">1</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\exception\ProductoNoEncontradoException.java">
+            <metrics metric_count="15">
+              <metric id="M0">8</metric>
+              <metric id="M1">4</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">1</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">1,00</metric>
+              <metric id="M7">1,00</metric>
+              <metric id="M8">4</metric>
+              <metric id="M9">ProductoNoEncontradoException.ProductoNoEncontradoException()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">5</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">0,75</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="1">
+              <method name="ProductoNoEncontradoException.ProductoNoEncontradoException()" line="4">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">2</block_depth>
+              <block_depth level="1">1</block_depth>
+              <block_depth level="2">1</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\exception\StockInsuficienteException.java">
+            <metrics metric_count="15">
+              <metric id="M0">8</metric>
+              <metric id="M1">4</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">1</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">1,00</metric>
+              <metric id="M7">1,00</metric>
+              <metric id="M8">4</metric>
+              <metric id="M9">StockInsuficienteException.StockInsuficienteException()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">5</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">0,75</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="1">
+              <method name="StockInsuficienteException.StockInsuficienteException()" line="4">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">2</block_depth>
+              <block_depth level="1">1</block_depth>
+              <block_depth level="2">1</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\model\Categoria.java">
+            <metrics metric_count="15">
+              <metric id="M0">51</metric>
+              <metric id="M1">27</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">8,00</metric>
+              <metric id="M7">1,00</metric>
+              <metric id="M8">18</metric>
+              <metric id="M9">Categoria.isActivo()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">22</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,15</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="8">
+              <method name="Categoria.Categoria()" line="21">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Categoria.Categoria()" line="18">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Categoria.desactivar()" line="30">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Categoria.getId()" line="39">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Categoria.getNombre()" line="43">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Categoria.isActivo()" line="47">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Categoria.renombrar()" line="26">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Categoria.toString()" line="35">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">4</block_depth>
+              <block_depth level="1">15</block_depth>
+              <block_depth level="2">8</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\model\Cliente.java">
+            <metrics metric_count="15">
+              <metric id="M0">97</metric>
+              <metric id="M1">57</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">13,00</metric>
+              <metric id="M7">1,77</metric>
+              <metric id="M8">33</metric>
+              <metric id="M9">Cliente.isActivo()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">38</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,33</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="13">
+              <method name="Cliente.actualizar()" line="47">
+                <complexity>1</complexity>
+                <statements>6</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.Cliente()" line="36">
+                <complexity>1</complexity>
+                <statements>7</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.Cliente()" line="33">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.desactivar()" line="56">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.getApellido()" line="81">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.getCorreo()" line="89">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.getId()" line="65">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.getNombre()" line="77">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.getNumeroDocumento()" line="73">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.getTelefono()" line="85">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.getTipoDocumento()" line="69">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.isActivo()" line="93">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Cliente.toString()" line="61">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">4</block_depth>
+              <block_depth level="1">30</block_depth>
+              <block_depth level="2">23</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\model\DetalleVenta.java">
+            <metrics metric_count="15">
+              <metric id="M0">65</metric>
+              <metric id="M1">38</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">3</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">8,00</metric>
+              <metric id="M7">1,38</metric>
+              <metric id="M8">30</metric>
+              <metric id="M9">DetalleVenta.getSubtotal()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">34</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,16</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="8">
+              <method name="DetalleVenta.DetalleVenta()" line="33">
+                <complexity>1</complexity>
+                <statements>5</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="DetalleVenta.DetalleVenta()" line="30">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="DetalleVenta.getCantidad()" line="53">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="DetalleVenta.getId()" line="41">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="DetalleVenta.getPrecioUnitario()" line="57">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="DetalleVenta.getProducto()" line="49">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="DetalleVenta.getSubtotal()" line="61">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="DetalleVenta.getVenta()" line="45">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">5</block_depth>
+              <block_depth level="1">22</block_depth>
+              <block_depth level="2">11</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\model\LineaCarrito.java">
+            <metrics metric_count="15">
+              <metric id="M0">37</metric>
+              <metric id="M1">22</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">2</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">6,00</metric>
+              <metric id="M7">1,50</metric>
+              <metric id="M8">11</metric>
+              <metric id="M9">LineaCarrito.getSubtotal()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">12</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,27</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="6">
+              <method name="LineaCarrito.getCantidad()" line="26">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="LineaCarrito.getNombre()" line="22">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="LineaCarrito.getPrecioUnitario()" line="30">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="LineaCarrito.getProductoId()" line="18">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="LineaCarrito.getSubtotal()" line="34">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="LineaCarrito.LineaCarrito()" line="11">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">3</block_depth>
+              <block_depth level="1">10</block_depth>
+              <block_depth level="2">9</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\model\Producto.java">
+            <metrics metric_count="15">
+              <metric id="M0">101</metric>
+              <metric id="M1">61</metric>
+              <metric id="M2">3,3</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">13,00</metric>
+              <metric id="M7">1,92</metric>
+              <metric id="M8">54</metric>
+              <metric id="M9">Producto.descontar()</metric>
+              <metric id="M10">3</metric>
+              <metric id="M11">56</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,33</metric>
+              <metric id="M14">1,15</metric>
+            </metrics>
+            <method_metrics method_count="13">
+              <method name="Producto.actualizar()" line="46">
+                <complexity>1</complexity>
+                <statements>5</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.desactivar()" line="64">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.descontar()" line="54">
+                <complexity>3</complexity>
+                <statements>5</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.getCategoria()" line="97">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.getDescripcion()" line="81">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.getId()" line="73">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.getNombre()" line="77">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.getPrecio()" line="85">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.getStock()" line="89">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.isActivo()" line="93">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.Producto()" line="37">
+                <complexity>1</complexity>
+                <statements>6</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.Producto()" line="34">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Producto.toString()" line="69">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">7</block_depth>
+              <block_depth level="1">29</block_depth>
+              <block_depth level="2">23</block_depth>
+              <block_depth level="3">2</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\model\Rol.java">
+            <metrics metric_count="15">
+              <metric id="M0">6</metric>
+              <metric id="M1">2</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">0,00</metric>
+              <metric id="M7">0,00</metric>
+              <metric id="M8"></metric>
+              <metric id="M9"></metric>
+              <metric id="M10">0</metric>
+              <metric id="M11">1</metric>
+              <metric id="M12">0</metric>
+              <metric id="M13">0,00</metric>
+              <metric id="M14">0,00</metric>
+            </metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">2</block_depth>
+              <block_depth level="1">0</block_depth>
+              <block_depth level="2">0</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\model\Usuario.java">
+            <metrics metric_count="15">
+              <metric id="M0">71</metric>
+              <metric id="M1">40</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">10,00</metric>
+              <metric id="M7">1,30</metric>
+              <metric id="M8">28</metric>
+              <metric id="M9">Usuario.isActivo()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">32</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,23</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="10">
+              <method name="Usuario.cambiarPassword()" line="39">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Usuario.desactivar()" line="43">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Usuario.getId()" line="47">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Usuario.getNombre()" line="51">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Usuario.getPassword()" line="59">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Usuario.getRol()" line="63">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Usuario.getUsername()" line="55">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Usuario.isActivo()" line="67">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Usuario.Usuario()" line="31">
+                <complexity>1</complexity>
+                <statements>5</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Usuario.Usuario()" line="28">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">4</block_depth>
+              <block_depth level="1">23</block_depth>
+              <block_depth level="2">13</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\model\Venta.java">
+            <metrics metric_count="15">
+              <metric id="M0">75</metric>
+              <metric id="M1">45</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">5</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">9,00</metric>
+              <metric id="M7">1,44</metric>
+              <metric id="M8">31</metric>
+              <metric id="M9">Venta.getUsuario()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">39</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,09</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="9">
+              <method name="Venta.agregar()" line="45">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="Venta.getCliente()" line="67">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Venta.getDetalles()" line="51">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="Venta.getFechaHora()" line="59">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Venta.getId()" line="55">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Venta.getTotal()" line="63">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Venta.getUsuario()" line="71">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Venta.Venta()" line="38">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="Venta.Venta()" line="31">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">9</block_depth>
+              <block_depth level="1">23</block_depth>
+              <block_depth level="2">13</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\repository\CategoriaRepository.java">
+            <metrics metric_count="15">
+              <metric id="M0">18</metric>
+              <metric id="M1">14</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">5,00</metric>
+              <metric id="M7">0,00</metric>
+              <metric id="M8"></metric>
+              <metric id="M9"></metric>
+              <metric id="M10">0</metric>
+              <metric id="M11">11</metric>
+              <metric id="M12">1</metric>
+              <metric id="M13">0,43</metric>
+              <metric id="M14">0,00</metric>
+            </metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">8</block_depth>
+              <block_depth level="1">6</block_depth>
+              <block_depth level="2">0</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\repository\ClienteRepository.java">
+            <metrics metric_count="15">
+              <metric id="M0">13</metric>
+              <metric id="M1">10</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">3,00</metric>
+              <metric id="M7">0,00</metric>
+              <metric id="M8"></metric>
+              <metric id="M9"></metric>
+              <metric id="M10">0</metric>
+              <metric id="M11">10</metric>
+              <metric id="M12">1</metric>
+              <metric id="M13">0,30</metric>
+              <metric id="M14">0,00</metric>
+            </metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">7</block_depth>
+              <block_depth level="1">3</block_depth>
+              <block_depth level="2">0</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\repository\DetalleVentaRepository.java">
+            <metrics metric_count="15">
+              <metric id="M0">10</metric>
+              <metric id="M1">7</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">0,00</metric>
+              <metric id="M7">0,00</metric>
+              <metric id="M8"></metric>
+              <metric id="M9"></metric>
+              <metric id="M10">0</metric>
+              <metric id="M11">1</metric>
+              <metric id="M12">0</metric>
+              <metric id="M13">0,00</metric>
+              <metric id="M14">0,00</metric>
+            </metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">7</block_depth>
+              <block_depth level="1">0</block_depth>
+              <block_depth level="2">0</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\repository\ProductoRepository.java">
+            <metrics metric_count="15">
+              <metric id="M0">22</metric>
+              <metric id="M1">16</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">5,00</metric>
+              <metric id="M7">0,00</metric>
+              <metric id="M8"></metric>
+              <metric id="M9"></metric>
+              <metric id="M10">0</metric>
+              <metric id="M11">11</metric>
+              <metric id="M12">1</metric>
+              <metric id="M13">0,50</metric>
+              <metric id="M14">0,00</metric>
+            </metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">8</block_depth>
+              <block_depth level="1">8</block_depth>
+              <block_depth level="2">0</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\repository\UsuarioRepository.java">
+            <metrics metric_count="15">
+              <metric id="M0">12</metric>
+              <metric id="M1">9</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">2,00</metric>
+              <metric id="M7">0,00</metric>
+              <metric id="M8"></metric>
+              <metric id="M9"></metric>
+              <metric id="M10">0</metric>
+              <metric id="M11">10</metric>
+              <metric id="M12">1</metric>
+              <metric id="M13">0,22</metric>
+              <metric id="M14">0,00</metric>
+            </metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">7</block_depth>
+              <block_depth level="1">2</block_depth>
+              <block_depth level="2">0</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\repository\VentaRepository.java">
+            <metrics metric_count="15">
+              <metric id="M0">22</metric>
+              <metric id="M1">16</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">0</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">6,00</metric>
+              <metric id="M7">0,00</metric>
+              <metric id="M8"></metric>
+              <metric id="M9"></metric>
+              <metric id="M10">0</metric>
+              <metric id="M11">12</metric>
+              <metric id="M12">1</metric>
+              <metric id="M13">0,44</metric>
+              <metric id="M14">0,00</metric>
+            </metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">9</block_depth>
+              <block_depth level="1">7</block_depth>
+              <block_depth level="2">0</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\service\AuthService.java">
+            <metrics metric_count="15">
+              <metric id="M0">59</metric>
+              <metric id="M1">41</metric>
+              <metric id="M2">2,4</metric>
+              <metric id="M3">14</metric>
+              <metric id="M4">1,7</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">5,00</metric>
+              <metric id="M7">3,60</metric>
+              <metric id="M8">33</metric>
+              <metric id="M9">AuthService.iniciar()</metric>
+              <metric id="M10">3</metric>
+              <metric id="M11">39</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,17</metric>
+              <metric id="M14">1,40</metric>
+            </metrics>
+            <method_metrics method_count="5">
+              <method name="AuthService.AuthService()" line="20">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="AuthService.configurarAdministrador()" line="46">
+                <complexity>1</complexity>
+                <statements>5</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>7</calls>
+              </method>
+              <method name="AuthService.credencialesInvalidas()" line="56">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="AuthService.iniciar()" line="33">
+                <complexity>3</complexity>
+                <statements>7</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>6</calls>
+              </method>
+              <method name="AuthService.requiereConfiguracion()" line="28">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">12</block_depth>
+              <block_depth level="1">11</block_depth>
+              <block_depth level="2">17</block_depth>
+              <block_depth level="3">1</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\service\CarritoService.java">
+            <metrics metric_count="15">
+              <metric id="M0">46</metric>
+              <metric id="M1">30</metric>
+              <metric id="M2">3,3</metric>
+              <metric id="M3">15</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">5,00</metric>
+              <metric id="M7">2,40</metric>
+              <metric id="M8">17</metric>
+              <metric id="M9">CarritoService.agregar()</metric>
+              <metric id="M10">3</metric>
+              <metric id="M11">24</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,03</metric>
+              <metric id="M14">1,40</metric>
+            </metrics>
+            <method_metrics method_count="5">
+              <method name="CarritoService.agregar()" line="17">
+                <complexity>3</complexity>
+                <statements>8</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>11</calls>
+              </method>
+              <method name="CarritoService.getLineas()" line="34">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="CarritoService.quitar()" line="30">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="CarritoService.total()" line="38">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="CarritoService.vaciar()" line="43">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">12</block_depth>
+              <block_depth level="1">6</block_depth>
+              <block_depth level="2">11</block_depth>
+              <block_depth level="3">1</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\service\CategoriaService.java">
+            <metrics metric_count="15">
+              <metric id="M0">66</metric>
+              <metric id="M1">47</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">20</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">7,00</metric>
+              <metric id="M7">3,00</metric>
+              <metric id="M8">19</metric>
+              <metric id="M9">CategoriaService.validar()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">20</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,19</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="7">
+              <method name="CategoriaService.actualizar()" line="38">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>4</calls>
+              </method>
+              <method name="CategoriaService.bloquear()" line="54">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="CategoriaService.CategoriaService()" line="19">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="CategoriaService.desactivar()" line="46">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>5</calls>
+              </method>
+              <method name="CategoriaService.listar()" line="26">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="CategoriaService.registrar()" line="32">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="CategoriaService.validar()" line="59">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">12</block_depth>
+              <block_depth level="1">14</block_depth>
+              <block_depth level="2">21</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\service\ClienteService.java">
+            <metrics metric_count="15">
+              <metric id="M0">78</metric>
+              <metric id="M1">52</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">29</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">9,00</metric>
+              <metric id="M7">2,67</metric>
+              <metric id="M8">17</metric>
+              <metric id="M9">ClienteService.validar()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">18</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,25</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="9">
+              <method name="ClienteService.actualizar()" line="49">
+                <complexity>1</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>4</calls>
+              </method>
+              <method name="ClienteService.buscar()" line="62">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="ClienteService.ClienteService()" line="17">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="ClienteService.consultar()" line="29">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ClienteService.consultarDocumento()" line="35">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>4</calls>
+              </method>
+              <method name="ClienteService.desactivar()" line="57">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ClienteService.listar()" line="23">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="ClienteService.registrar()" line="42">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="ClienteService.validar()" line="67">
+                <complexity>1</complexity>
+                <statements>5</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>8</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">11</block_depth>
+              <block_depth level="1">17</block_depth>
+              <block_depth level="2">24</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\service\ComprobanteService.java">
+            <metrics metric_count="15">
+              <metric id="M0">36</metric>
+              <metric id="M1">24</metric>
+              <metric id="M2">4,2</metric>
+              <metric id="M3">19</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">3,00</metric>
+              <metric id="M7">4,33</metric>
+              <metric id="M8">23</metric>
+              <metric id="M9">ComprobanteService.cliente()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">25</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,25</metric>
+              <metric id="M14">1,33</metric>
+            </metrics>
+            <method_metrics method_count="3">
+              <method name="ComprobanteService.cliente()" line="23">
+                <complexity>2</complexity>
+                <statements>3</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="ComprobanteService.generar()" line="11">
+                <complexity>1</complexity>
+                <statements>9</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>12</calls>
+              </method>
+              <method name="ComprobanteService.linea()" line="31">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>4</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">8</block_depth>
+              <block_depth level="1">3</block_depth>
+              <block_depth level="2">12</block_depth>
+              <block_depth level="3">1</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\service\ProductoService.java">
+            <metrics metric_count="15">
+              <metric id="M0">80</metric>
+              <metric id="M1">57</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">30</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">8,00</metric>
+              <metric id="M7">3,50</metric>
+              <metric id="M8">20</metric>
+              <metric id="M9">ProductoService.validar()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">21</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,26</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="8">
+              <method name="ProductoService.actualizar()" line="46">
+                <complexity>1</complexity>
+                <statements>6</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>5</calls>
+              </method>
+              <method name="ProductoService.bloquear()" line="62">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="ProductoService.consultar()" line="33">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>4</calls>
+              </method>
+              <method name="ProductoService.desactivar()" line="57">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="ProductoService.listar()" line="27">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="ProductoService.ProductoService()" line="20">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="ProductoService.registrar()" line="40">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="ProductoService.validar()" line="67">
+                <complexity>1</complexity>
+                <statements>8</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>10</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">13</block_depth>
+              <block_depth level="1">16</block_depth>
+              <block_depth level="2">28</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\service\SesionService.java">
+            <metrics metric_count="15">
+              <metric id="M0">42</metric>
+              <metric id="M1">26</metric>
+              <metric id="M2">7,7</metric>
+              <metric id="M3">5</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">5,00</metric>
+              <metric id="M7">2,20</metric>
+              <metric id="M8">22</metric>
+              <metric id="M9">SesionService.exigirAdministrador()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">25</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,19</metric>
+              <metric id="M14">1,40</metric>
+            </metrics>
+            <method_metrics method_count="5">
+              <method name="SesionService.abrir()" line="18">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>1</calls>
+              </method>
+              <method name="SesionService.cerrar()" line="39">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="SesionService.exigirAdministrador()" line="31">
+                <complexity>2</complexity>
+                <statements>4</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="SesionService.exigirUsuario()" line="22">
+                <complexity>2</complexity>
+                <statements>4</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="SesionService.SesionService()" line="14">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">8</block_depth>
+              <block_depth level="1">7</block_depth>
+              <block_depth level="2">9</block_depth>
+              <block_depth level="3">2</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\service\UsuarioService.java">
+            <metrics metric_count="15">
+              <metric id="M0">60</metric>
+              <metric id="M1">44</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">19</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">6,00</metric>
+              <metric id="M7">3,17</metric>
+              <metric id="M8">19</metric>
+              <metric id="M9">UsuarioService.buscar()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">20</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">1,16</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="6">
+              <method name="UsuarioService.buscar()" line="56">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="UsuarioService.cambiarPassword()" line="43">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="UsuarioService.desactivar()" line="50">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="UsuarioService.listar()" line="26">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="UsuarioService.registrar()" line="32">
+                <complexity>1</complexity>
+                <statements>6</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>9</calls>
+              </method>
+              <method name="UsuarioService.UsuarioService()" line="19">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">12</block_depth>
+              <block_depth level="1">13</block_depth>
+              <block_depth level="2">19</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\service\VentaService.java">
+            <metrics metric_count="15">
+              <metric id="M0">102</metric>
+              <metric id="M1">74</metric>
+              <metric id="M2">2,7</metric>
+              <metric id="M3">43</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">8,00</metric>
+              <metric id="M7">4,75</metric>
+              <metric id="M8">71</metric>
+              <metric id="M9">VentaService.buscarCliente()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">75</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,32</metric>
+              <metric id="M14">1,25</metric>
+            </metrics>
+            <method_metrics method_count="8">
+              <method name="VentaService.agregarDetalle()" line="93">
+                <complexity>1</complexity>
+                <statements>5</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>7</calls>
+              </method>
+              <method name="VentaService.buscarCliente()" line="84">
+                <complexity>2</complexity>
+                <statements>5</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="VentaService.consultar()" line="65">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="VentaService.consultarDia()" line="48">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>8</calls>
+              </method>
+              <method name="VentaService.registrar()" line="38">
+                <complexity>1</complexity>
+                <statements>6</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>8</calls>
+              </method>
+              <method name="VentaService.totalDia()" line="57">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>8</calls>
+              </method>
+              <method name="VentaService.validarLineas()" line="71">
+                <complexity>2</complexity>
+                <statements>8</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>7</calls>
+              </method>
+              <method name="VentaService.VentaService()" line="28">
+                <complexity>1</complexity>
+                <statements>5</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">19</block_depth>
+              <block_depth level="1">17</block_depth>
+              <block_depth level="2">33</block_depth>
+              <block_depth level="3">5</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\util\Formato.java">
+            <metrics metric_count="15">
+              <metric id="M0">26</metric>
+              <metric id="M1">15</metric>
+              <metric id="M2">0,0</metric>
+              <metric id="M3">7</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">4,00</metric>
+              <metric id="M7">0,75</metric>
+              <metric id="M8">11</metric>
+              <metric id="M9">Formato.estado()</metric>
+              <metric id="M10">1</metric>
+              <metric id="M11">15</metric>
+              <metric id="M12">2</metric>
+              <metric id="M13">0,67</metric>
+              <metric id="M14">1,00</metric>
+            </metrics>
+            <method_metrics method_count="4">
+              <method name="Formato.dinero()" line="14">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Formato.estado()" line="23">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Formato.fecha()" line="18">
+                <complexity>1</complexity>
+                <statements>1</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>4</calls>
+              </method>
+              <method name="Formato.Formato()" line="11">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">8</block_depth>
+              <block_depth level="1">4</block_depth>
+              <block_depth level="2">3</block_depth>
+              <block_depth level="3">0</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+          <file file_name="com\comidasrapidas\util\Validacion.java">
+            <metrics metric_count="15">
+              <metric id="M0">61</metric>
+              <metric id="M1">39</metric>
+              <metric id="M2">5,1</metric>
+              <metric id="M3">17</metric>
+              <metric id="M4">0,0</metric>
+              <metric id="M5">1</metric>
+              <metric id="M6">8,00</metric>
+              <metric id="M7">3,00</metric>
+              <metric id="M8">19</metric>
+              <metric id="M9">Validacion.exigir()</metric>
+              <metric id="M10">2</metric>
+              <metric id="M11">36</metric>
+              <metric id="M12">3</metric>
+              <metric id="M13">1,56</metric>
+              <metric id="M14">1,38</metric>
+            </metrics>
+            <method_metrics method_count="8">
+              <method name="Validacion.correo()" line="26">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Validacion.exigir()" line="56">
+                <complexity>2</complexity>
+                <statements>2</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>0</calls>
+              </method>
+              <method name="Validacion.opcional()" line="19">
+                <complexity>2</complexity>
+                <statements>4</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Validacion.password()" line="50">
+                <complexity>1</complexity>
+                <statements>2</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Validacion.precio()" line="33">
+                <complexity>2</complexity>
+                <statements>7</statements>
+                <maximum_depth>3</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Validacion.texto()" line="13">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>2</calls>
+              </method>
+              <method name="Validacion.username()" line="44">
+                <complexity>1</complexity>
+                <statements>3</statements>
+                <maximum_depth>2</maximum_depth>
+                <calls>3</calls>
+              </method>
+              <method name="Validacion.Validacion()" line="10">
+                <complexity>1</complexity>
+                <statements>0</statements>
+                <maximum_depth>0</maximum_depth>
+                <calls>0</calls>
+              </method>
+            </method_metrics>
+            <block_depths depth_count="10">
+              <block_depth level="0">7</block_depth>
+              <block_depth level="1">8</block_depth>
+              <block_depth level="2">19</block_depth>
+              <block_depth level="3">5</block_depth>
+              <block_depth level="4">0</block_depth>
+              <block_depth level="5">0</block_depth>
+              <block_depth level="6">0</block_depth>
+              <block_depth level="7">0</block_depth>
+              <block_depth level="8">0</block_depth>
+              <block_depth level="9+">0</block_depth>
+            </block_depths>
+          </file>
+        </files>
+      </checkpoint>
+    </checkpoints>
+  </project>
+</sourcemonitor_metrics>

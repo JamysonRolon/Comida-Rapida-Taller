@@ -1,0 +1,108 @@
+@startuml
+!pragma layout smetana
+skinparam defaultFontName Segoe UI
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+hide empty methods
+title Clases principales implementadas
+class Usuario {
+  - id : Long
+  - nombre : String
+  - username : String
+  - password : String
+  - rol : Rol
+  - activo : boolean
+  + cambiarPassword(String)
+  + desactivar()
+}
+enum Rol {
+  ADMINISTRADOR
+  CAJERO
+}
+class Cliente {
+  - id : Long
+  - tipoDocumento : String
+  - numeroDocumento : String
+  - nombre : String
+  - apellido : String
+  - telefono : String
+  - correo : String
+  - activo : boolean
+  + actualizar(Cliente)
+  + desactivar()
+}
+class Categoria {
+  - id : Long
+  - nombre : String
+  - activo : boolean
+  + renombrar(String)
+  + desactivar()
+}
+class Producto {
+  - id : Long
+  - nombre : String
+  - descripcion : String
+  - precio : BigDecimal
+  - stock : int
+  - activo : boolean
+  + actualizar(Producto, Categoria)
+  + descontar(int)
+  + desactivar()
+}
+class Venta {
+  - id : Long
+  - fechaHora : Instant
+  - total : BigDecimal
+  + agregar(Producto, int)
+  + getDetalles() : List<DetalleVenta>
+}
+class DetalleVenta {
+  - id : Long
+  - cantidad : int
+  - precioUnitario : BigDecimal
+  - subtotal : BigDecimal
+}
+class LineaCarrito {
+  - productoId : Long
+  - nombre : String
+  - cantidad : int
+  - precioUnitario : BigDecimal
+  + getSubtotal() : BigDecimal
+}
+class VentaService {
+  + registrar(List<LineaCarrito>, Long) : Venta
+  + consultarDia(LocalDate) : List<Venta>
+  + totalDia(LocalDate) : BigDecimal
+  + consultar(Long) : Venta
+}
+class CarritoService {
+  + agregar(Producto, int)
+  + quitar(Long)
+  + getLineas() : List<LineaCarrito>
+  + total() : BigDecimal
+  + vaciar()
+}
+class SesionService {
+  + exigirUsuario() : Usuario
+  + exigirAdministrador() : Usuario
+  + cerrar()
+}
+class ComprobanteService {
+  + generar(Venta) : String
+}
+Usuario --> Rol
+Categoria "1" <-- "0..*" Producto
+Usuario "1" <-- "0..*" Venta
+Cliente "0..1" <-- "0..*" Venta
+Venta "1" *-- "1..*" DetalleVenta
+Producto "1" <-- "0..*" DetalleVenta
+CarritoService "1" *-- "0..*" LineaCarrito
+VentaService --> SesionService
+VentaService ..> Venta
+VentaService ..> LineaCarrito
+ComprobanteService ..> Venta
+note bottom
+Los getters y constructores se omiten para facilitar la lectura.
+Los servicios CRUD y repositorios se detallan en la arquitectura.
+end note
+@enduml

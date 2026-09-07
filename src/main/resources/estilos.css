@@ -1,0 +1,23 @@
+.root { -fx-font-family: "Segoe UI"; -fx-font-size: 13px; -fx-background-color: #f5f6f8; -fx-text-fill: #172b36; }
+.page-title { -fx-font-size: 27px; -fx-font-weight: bold; -fx-text-fill: #123a43; }
+.muted { -fx-text-fill: #526774; -fx-font-size: 13px; }
+.sidebar { -fx-background-color: #173d46; }
+.sidebar .label { -fx-text-fill: #ecf4f5; }
+.sidebar .button { -fx-background-color: #24525c; -fx-text-fill: white; -fx-alignment: center-left; -fx-padding: 12px; }
+.sidebar .button:hover { -fx-background-color: #326b76; }
+.brand { -fx-font-size: 24px; -fx-font-weight: bold; -fx-padding: 0 0 24 0; }
+.button { -fx-background-color: #e0e8ea; -fx-background-radius: 5; -fx-padding: 10px 14px; -fx-text-fill: #173d46; -fx-cursor: hand; }
+.button:hover { -fx-background-color: #cddcdf; }
+.button.primary { -fx-background-color: #117d69; -fx-text-fill: white; -fx-font-weight: bold; }
+.button.primary:hover { -fx-background-color: #0a6655; }
+.button:focused { -fx-border-color: #e59c28; -fx-border-width: 2; -fx-border-radius: 5; }
+.text-field, .combo-box, .date-picker { -fx-background-color: white; -fx-border-color: #a7b7be; -fx-border-radius: 4; -fx-padding: 6px; }
+.text-field:focused, .combo-box:focused { -fx-border-color: #117d69; }
+.table-view { -fx-background-color: white; -fx-border-color: #dce4e7; -fx-fixed-cell-size: 36; }
+.table-view .column-header { -fx-background-color: #e6eef0; -fx-pref-height: 38; }
+.table-row-cell:odd { -fx-background-color: #f5f8f9; }
+.table-row-cell:selected { -fx-background-color: #236b77; }
+.table-row-cell:selected .text { -fx-fill: white; }
+.total { -fx-font-size: 26px; -fx-font-weight: bold; -fx-text-fill: #117d69; }
+.form { -fx-padding: 14px; -fx-background-color: white; -fx-background-radius: 6; }
+.receipt { -fx-font-family: "Consolas"; -fx-font-size: 14px; }

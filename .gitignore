@@ -1,0 +1,9 @@
+target/
+.work/
+.env
+*.log
+.idea/
+*.iml
+.vscode/
+entregables/
+*.smproj

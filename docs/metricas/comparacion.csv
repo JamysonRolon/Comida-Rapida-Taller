@@ -1,0 +1,16 @@
+id;metrica;checkpoint_01;checkpoint_02;checkpoint_03;checkpoint_04
+M0;Lines;2421;2435;2623;2631
+M1;Statements;1663;1674;1806;1812
+M2;Percent Branch Statements;2,3;2,3;2,2;2,2
+M3;Method Call Statements;674;680;759;763
+M4;Percent Lines with Comments;0,0;0,0;0,0;0,0
+M5;Classes and Interfaces;46;46;48;48
+M6;Methods per Class;6,00;6,04;6,12;6,12
+M7;Average Statements per Method;2,94;2,95;3,02;3,03
+M8;Line Number of Most Complex Method;;;;
+M9;Name of Most Complex Method;Dialogos.mensaje();Dialogos.mensaje();Dialogos.mensaje();Dialogos.mensaje()
+M10;Maximum Complexity;7;7;7;7
+M11;Line Number of Deepest Block;;;;
+M12;Maximum Block Depth;4;4;4;4
+M13;Average Block Depth;1,33;1,34;1,33;1,33
+M14;Average Complexity;1,24;1,25;1,24;1,24
